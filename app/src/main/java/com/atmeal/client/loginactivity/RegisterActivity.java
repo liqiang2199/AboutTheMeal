@@ -105,6 +105,7 @@ public class RegisterActivity extends BaseFragmentActivity implements OkHttp_Cal
                         T=200;
                     }
                 }
+
             }
         };
         SMSSDK.registerEventHandler(eventHandler);
