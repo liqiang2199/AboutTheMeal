@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/include_titile_back_common"/>
+    <include
+        layout="@layout/include_10_layout_linear"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pad_48dp"
+        android:text="@string/persion_data"
+        android:textSize="@dimen/text_size_14sp"
+        android:textColor="@color/Black"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/margin_10dp"/>
+    <include
+        layout="@layout/include_1_layout_linear"/>
+
+    <LinearLayout
+        android:id="@+id/change_bind_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pad_48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/margin_10dp">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bind_phone"
+            android:textSize="@dimen/text_size_14sp"
+            android:textColor="@color/Black"/>
+    </LinearLayout>
+    <include
+        layout="@layout/include_10_layout_linear"/>
+    <TextView
+        android:id="@+id/text_changePassWord"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pad_48dp"
+        android:text="@string/login_phone_password"
+        android:textSize="@dimen/text_size_14sp"
+        android:padding="@dimen/margin_10dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/Black"/>
+    <include
+        layout="@layout/include_1_layout_linear"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/pad_48dp"
+        android:text="@string/common"
+        android:textSize="@dimen/text_size_14sp"
+        android:padding="@dimen/margin_10dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/Black"/>
+    <include
+        layout="@layout/include_1_layout_linear"/>
+
+</LinearLayout>

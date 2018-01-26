@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pad_48dp"
+        android:orientation="horizontal"
+        android:background="@color/style_title">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/me_title"
+            style="@style/text_size_16_white"
+            android:paddingLeft="@dimen/margin_10dp"/>
+        <ImageView
+            android:id="@+id/image_set"
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/me_set"
+            android:layout_gravity="center"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/me_lis"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/style_title">
+
+                <com.atmeal.client.weigth.myImageView
+                    android:id="@+id/iv_head_set"
+                    android:layout_height="80dp"
+                    android:layout_width="80dp"
+                    android:src="@mipmap/bg_like_users_extend_pressed"
+                    android:layout_centerInParent="true"
+                    imagecontrol:border_thickness="2dp"
+                    imagecontrol:border_outside_color="@color/white"
+                    imagecontrol:border_inside_color="@color/white"
+                    android:layout_gravity="center_vertical"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="@dimen/margin_15dp"/>
+
+                <TextView
+                    android:id="@+id/login_is_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="@string/me_discount"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_18sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_80dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margin_10dp"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textSize="@dimen/text_size_14sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/me_money_package"
+                        android:textSize="@dimen/text_size_14sp"
+                        android:paddingTop="@dimen/margin_10dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margin_10dp"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textSize="@dimen/text_size_14sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/me_Discount"
+                        android:textSize="@dimen/text_size_14sp"
+                        android:paddingTop="@dimen/margin_10dp"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <include
+                layout="@layout/include_10_layout_linear"/>
+
+            <include
+                layout="@layout/include_1_layout_linear"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_80dp"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin_10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/discount" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="@string/me_discount"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/text_size_18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/pad_48dp"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin_10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/me_address"
+                    android:textSize="@dimen/text_size_14sp"
+                    android:textColor="@color/Black"
+                    android:drawableLeft="@mipmap/address"
+                    android:drawablePadding="@dimen/margin_5dp"
+                    android:gravity="center"/>
+            </LinearLayout>
+            <include
+                layout="@layout/include_1_layout_linear"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/pad_48dp"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin_10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/me_collection"
+                    android:textSize="@dimen/text_size_14sp"
+                    android:textColor="@color/Black"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="@dimen/margin_5dp"
+                    android:drawableLeft="@mipmap/collection"/>
+            </LinearLayout>
+            <include
+                layout="@layout/include_10_layout_linear"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/pad_48dp"
+                android:text="@string/me_read"
+                android:textSize="@dimen/text_size_14sp"
+                android:padding="@dimen/margin_10dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/Black"
+                android:drawableLeft="@mipmap/novel"
+                android:drawablePadding="@dimen/margin_5dp"/>
+            <include
+                layout="@layout/include_1_layout_linear"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/pad_48dp"
+                android:text="@string/me_aline_video"
+                android:textSize="@dimen/text_size_14sp"
+                android:padding="@dimen/margin_10dp"
+                android:gravity="center_vertical"
+                android:drawableLeft="@mipmap/onlinevideo"
+                android:drawablePadding="@dimen/margin_5dp"
+                android:textColor="@color/Black"/>
+            <include
+                layout="@layout/include_1_layout_linear"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/pad_48dp"
+                android:text="@string/me_Community"
+                android:textSize="@dimen/text_size_14sp"
+                android:padding="@dimen/margin_10dp"
+                android:gravity="center_vertical"
+                android:drawableLeft="@mipmap/community"
+                android:drawablePadding="@dimen/margin_5dp"
+                android:textColor="@color/Black"/>
+            <include
+                layout="@layout/include_1_layout_linear"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/pad_48dp"
+                android:text="@string/me_waterandelectricityfee"
+                android:textSize="@dimen/text_size_14sp"
+                android:padding="@dimen/margin_10dp"
+                android:gravity="center_vertical"
+                android:drawableLeft="@mipmap/hydropower"
+                android:drawablePadding="@dimen/margin_5dp"
+                android:textColor="@color/Black"/>
+            <include
+                layout="@layout/include_1_layout_linear"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

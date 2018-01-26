@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="@dimen/margin_10dp"
+    android:layout_marginTop="@dimen/margin_10dp"
+    android:paddingTop="@dimen/margin_5dp"
+    android:paddingBottom="@dimen/margin_5dp"
+    android:paddingRight="@dimen/margin_10dp"
+    android:paddingLeft="@dimen/margin_10dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/shop_url"
+        android:layout_width="@dimen/margin_80dp"
+        android:layout_height="@dimen/margin_80dp"
+        android:src="@mipmap/meisi1"
+        android:scaleType="centerCrop"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/margin_15dp">
+
+                <TextView
+                    android:id="@+id/shop_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:paddingBottom="5dp"/>
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="?android:attr/ratingBarStyleSmall"/>
+
+                <TextView
+                    android:id="@+id/address_shopType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:paddingTop="@dimen/margin_5dp"
+                    android:paddingBottom="5dp"/>
+                <TextView
+                    android:id="@+id/is_fight_alone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textColor="@color/style_title"
+                    android:paddingTop="@dimen/margin_5dp"
+                    android:paddingBottom="5dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/margin_15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:paddingBottom="5dp"
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:paddingBottom="5dp"
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/shop_Address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:paddingTop="@dimen/margin_5dp"
+                    android:paddingBottom="5dp"/>
+                <TextView
+                    android:id="@+id/text_go_fight"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/go_fight_alone"
+                    android:paddingTop="@dimen/margin_5dp"
+                    android:background="@drawable/shape_btn_red"
+                    android:textSize="@dimen/text_size_12sp"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <include
+            layout="@layout/include_1_layout_linear"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/margin_5dp"
+            android:paddingBottom="@dimen/margin_5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_30dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/margin_15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_fight_alone"
+                    android:background="@color/style_title"
+                    android:textColor="@color/white"
+                    android:padding="@dimen/margin_5dp"
+                    android:layout_marginRight="@dimen/margin_5dp"/>
+                <TextView
+                    android:id="@+id/fight_alone_explain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:maxLines="1"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_30dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/margin_15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/discount_text_tip"
+                    android:background="@color/discount_color"
+                    android:textColor="@color/white"
+                    android:padding="@dimen/margin_5dp"
+                    android:layout_marginRight="@dimen/margin_5dp"/>
+                <TextView
+                    android:id="@+id/discount_explain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:maxLines="1"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

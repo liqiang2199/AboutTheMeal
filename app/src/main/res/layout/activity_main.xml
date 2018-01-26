@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/WhiteSmoke">
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/margin_5dp"
+        android:layout_marginTop="@dimen/margin_5dp">
+        <RadioButton
+            android:id="@+id/home_page"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/footerhomeselector"
+            android:text="首页"
+            android:gravity="center"
+            android:drawablePadding="@dimen/margin_5dp"
+            android:checked="true"
+            android:button="@null"/>
+        <RadioButton
+            android:id="@+id/page_near"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/footernearselector"
+            android:text="附近"
+            android:gravity="center"
+            android:drawablePadding="@dimen/margin_5dp"
+            android:button="@null"/>
+        <RadioButton
+            android:id="@+id/nearby_page"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/footerorderselector"
+            android:text="订单"
+            android:gravity="center"
+            android:drawablePadding="@dimen/margin_5dp"
+            android:button="@null"/>
+        <RadioButton
+            android:id="@+id/me_page"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/footermeselector"
+            android:text="我的"
+            android:gravity="center"
+            android:drawablePadding="@dimen/margin_5dp"
+            android:button="@null"/>
+
+    </RadioGroup>
+
+
+
+</LinearLayout>

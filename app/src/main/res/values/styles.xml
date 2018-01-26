@@ -1,0 +1,49 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="edit_login">
+        <item name="android:background">@null</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="text_size_16_white">
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="NobackDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!-- 横分割线 -->
+    <style name="Line_horizontal">
+        <item name="android:background">@color/basesub</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+    </style>
+
+    <style name="Me_Bind_MoblieEdit">
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:inputType">number</item>
+        <item name="android:hint">@string/me_Chinamobile</item>
+        <item name="android:maxLength">11</item>
+        <item name="android:ems">12</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+    <style name="font14_white">
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>

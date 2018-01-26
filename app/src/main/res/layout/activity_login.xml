@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        layout="@layout/include_titile_back_common"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/margin_80dp"
+        android:layout_marginLeft="@dimen/margin_15dp"
+        android:layout_marginRight="@dimen/margin_15dp">
+
+        <include
+            layout="@layout/include_1_layout_linear"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_name"
+                android:drawableLeft="@mipmap/icon_register_name"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:drawablePadding="@dimen/margin_5dp"/>
+
+            <EditText
+                android:id="@+id/login_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/pad_48dp"
+                android:hint="@string/login_name_hint"
+                android:layout_marginLeft="@dimen/margin_15dp"
+                style="@style/edit_login"/>
+        </LinearLayout>
+        <include
+            layout="@layout/include_1_layout_linear"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register"
+                android:drawableLeft="@mipmap/icon_register_password"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:drawablePadding="@dimen/margin_5dp"/>
+
+            <EditText
+                android:id="@+id/login_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/pad_48dp"
+                android:hint="@string/register_name_hint"
+                android:layout_marginLeft="@dimen/margin_15dp"
+                android:inputType="textPassword"
+                style="@style/edit_login"/>
+        </LinearLayout>
+        <include
+            layout="@layout/include_1_layout_linear"/>
+    </LinearLayout>
+    <include
+        layout="@layout/include_btn_common"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/margin_15dp"
+    android:layout_marginLeft="@dimen/margin_15dp"
+    android:layout_marginRight="@dimen/margin_15dp">
+    <CheckBox
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="@string/login_forget"/>
+    <TextView
+        android:id="@+id/forget_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_forget_tip"/>
+</LinearLayout>
+
+    <TextView
+        android:id="@+id/text_span"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login_register"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/pad_48dp"/>
+
+</LinearLayout>

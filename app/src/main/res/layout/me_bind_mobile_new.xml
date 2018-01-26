@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    >
+
+    <include layout="@layout/include_titile_back_common"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp" 
+        >
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Black"
+        android:layout_centerInParent="true"
+        android:text="@string/me_bind_newmobile" />
+    </RelativeLayout>
+
+    
+
+     <View
+        style="@style/Line_horizontal"/>
+      <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <include layout="@layout/liner_layfour" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true" >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="0.25"
+                            android:gravity="center_vertical"
+                            android:text="@string/me_oldmobile"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                        <EditText
+                            android:id="@+id/edt_mobile_old"
+                            style="@style/Me_Bind_MoblieEdit"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="0.45"/>
+
+                        <!--<RelativeLayout-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_weight="0.3" >-->
+
+                            <!--<ImageView-->
+                                <!--android:id="@+id/iv_clear_old"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_centerInParent="true"-->
+                                <!--android:padding="3dp"-->
+                                <!--android:src="@mipmap/ico_tv_clear" />-->
+                        <!--</RelativeLayout>-->
+                    </LinearLayout>
+                </RelativeLayout>
+   <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <include layout="@layout/liner_layfour" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true" >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="0.25"
+                            android:gravity="center_vertical"
+                            android:text="@string/me_newmobile"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                        <EditText
+                            android:id="@+id/edt_mobile_new"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="0.45"
+                            style="@style/Me_Bind_MoblieEdit" >
+                        </EditText>
+
+                        <!--<RelativeLayout-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_weight="0.3" >-->
+
+                            <!--<ImageView-->
+                                <!--android:id="@+id/iv_clear_new"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_centerInParent="true"-->
+                                <!--android:padding="3dp"-->
+                                <!--android:src="@mipmap/ico_tv_clear" />-->
+                        <!--</RelativeLayout>-->
+                    </LinearLayout>
+                </RelativeLayout>
+
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+
+         <include layout="@layout/liner_layfour" />
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/tv_old"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="0.25"
+                android:gravity="center_vertical"
+                android:text="@string/register_yzm"
+                android:textSize="@dimen/text_size_14sp" />
+
+            <EditText
+                android:id="@+id/edt_yzm"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.45"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:hint="@string/register_reyzm"
+                android:inputType="numberSigned"
+                android:textSize="@dimen/text_size_14sp"
+                android:maxLength="6"
+                android:maxLines="1"
+                android:paddingLeft="5dp">
+
+            </EditText>
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3">
+
+                <Button
+                    android:id="@+id/btn_get_yzm"
+                    style="@style/font14_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/shape_btn_base"
+                    android:padding="3dp"
+                    android:text="@string/register_getreyzm" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+     </RelativeLayout>
+
+    <include layout="@layout/include_btn_common"/>
+</LinearLayout>
