@@ -248,7 +248,7 @@ public class BrowserActivity extends Activity {
 										Toast.makeText(
 												BrowserActivity.this,
 												"为避免后台乱下载应用，下载功能已禁用！",
-												1000).show();
+												Toast.LENGTH_SHORT).show();
 									}
 								})
 						.setNegativeButton("no",
