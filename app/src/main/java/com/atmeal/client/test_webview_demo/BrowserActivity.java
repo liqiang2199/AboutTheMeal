@@ -1,5 +1,6 @@
 package com.atmeal.client.test_webview_demo;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -518,6 +519,7 @@ public class BrowserActivity extends Activity {
 	public static final int MSG_INIT_UI = 1;
 	private final int mUrlStartNum = 0;
 	private int mCurrentUrl = mUrlStartNum;
+	@SuppressLint("HandlerLeak")
 	private Handler mTestHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -527,6 +529,7 @@ public class BrowserActivity extends Activity {
 						return;
 					}
 
+					@SuppressLint("SdCardPath")
 					String testUrl = "file:///sdcard/outputHtml/html/"
 							+ Integer.toString(mCurrentUrl) + ".html";
 					if (mWebView != null) {
