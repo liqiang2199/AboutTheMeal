@@ -513,6 +513,7 @@ public class BrowserActivity extends Activity {
 		if (mWebView != null)
 			mWebView.destroy();
 		super.onDestroy();
+
 	}
 
 	public static final int MSG_OPEN_TEST_URL = 0;
