@@ -18,6 +18,7 @@ import com.atmeal.client.common.StringCommon;
 import com.atmeal.client.loginactivity.HeaderSetActivity;
 import com.atmeal.client.loginactivity.LoginActivity;
 import com.atmeal.client.meactivity.SetActivity;
+import com.atmeal.client.test_webview_demo.BrowserActivity;
 import com.atmeal.client.utils.UtilTools;
 import com.atmeal.client.weigth.myImageView;
 import com.squareup.picasso.Picasso;
@@ -32,7 +33,7 @@ public class MePageFragment extends BaseMealFragment {
     private View meView;
 
     private ImageView image_set;
-    private TextView login_is_no;
+    private TextView login_is_no,fragvideo;
     private myImageView iv_head_set;
 
     @Nullable
@@ -49,14 +50,14 @@ public class MePageFragment extends BaseMealFragment {
     public void InitView() {
         image_set = (ImageView)meView.findViewById(R.id.image_set);
         login_is_no = (TextView) meView.findViewById(R.id.login_is_no);
-
-
+        fragvideo=meView.findViewById(R.id.fragvideo);
         iv_head_set = (myImageView)meView.findViewById(R.id.iv_head_set);
         login_TextTip();
 
         InitOnClick(image_set);
         InitOnClick(login_is_no);
         InitOnClick(iv_head_set);
+        InitOnClick(fragvideo);
     }
 
     @Override
@@ -80,6 +81,10 @@ public class MePageFragment extends BaseMealFragment {
                         break;
                     case R.id.iv_head_set:
                         IntentCommon.getIstance().StartIntent(getContext(),HeaderSetActivity.class);
+                        break;
+                    case R.id.fragvideo:
+                        Intent intent2 = new Intent(getActivity(), BrowserActivity.class);
+                        startActivity(intent2);
                         break;
                 }
             }

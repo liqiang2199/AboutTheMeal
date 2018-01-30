@@ -203,6 +203,7 @@
             <include
                 layout="@layout/include_1_layout_linear"/>
             <TextView
+                android:id="@+id/fragvideo"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/pad_48dp"
                 android:text="@string/me_aline_video"
