@@ -72,19 +72,20 @@ public class MePageFragment extends BaseMealFragment {
             public void onClick(View view) {
                 switch (view.getId()){
                     case R.id.image_set:
-                        Intent intent = new Intent(getActivity(), SetActivity.class);
-                        startActivity(intent);
+                        //设置
+                        IntentCommon.getIstance().StartIntent(getContext(),SetActivity.class);
                         break;
                     case R.id.login_is_no:
-                        Intent intent1 = new Intent(getActivity(), LoginActivity.class);
-                        startActivity(intent1);
+                        //登录
+                        IntentCommon.getIstance().StartIntent(getContext(),LoginActivity.class);
                         break;
                     case R.id.iv_head_set:
+                        //头像设置
                         IntentCommon.getIstance().StartIntent(getContext(),HeaderSetActivity.class);
                         break;
                     case R.id.fragvideo:
-                        Intent intent2 = new Intent(getActivity(), BrowserActivity.class);
-                        startActivity(intent2);
+                        //视频跳转
+                        IntentCommon.getIstance().StartIntent(getContext(),BrowserActivity.class);
                         break;
                 }
             }

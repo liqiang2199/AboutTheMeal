@@ -298,11 +298,11 @@ public class BrowserActivity extends Activity {
 		webSetting.setDomStorageEnabled(true);
 		webSetting.setJavaScriptEnabled(true);
 		webSetting.setGeolocationEnabled(true);
-		webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
-		webSetting.setAppCachePath(this.getDir("appcache", 0).getPath());
-		webSetting.setDatabasePath(this.getDir("databases", 0).getPath());
-		webSetting.setGeolocationDatabasePath(this.getDir("geolocation", 0)
-				.getPath());
+//		webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
+//		webSetting.setAppCachePath(this.getDir("appcache", 0).getPath());
+//		webSetting.setDatabasePath(this.getDir("databases", 0).getPath());
+//		webSetting.setGeolocationDatabasePath(this.getDir("geolocation", 0)
+//				.getPath());
 		// webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
 		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
 		// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
