@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ import com.atmeal.client.R;
 import com.atmeal.client.test_webview_demo.utils.X5WebView;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.ValueCallback;
@@ -39,8 +42,10 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 import com.tencent.smtt.utils.TbsLog;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 
 
 public class BrowserActivity extends Activity {
@@ -164,6 +169,7 @@ public class BrowserActivity extends Activity {
 					changGoForwardButton(view);
 				/* mWebView.showLog("test Log"); */
 			}
+
 		});
 
 		mWebView.setWebChromeClient(new WebChromeClient() {
