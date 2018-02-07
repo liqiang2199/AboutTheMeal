@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.os.Message;
 import android.os.Process;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,8 @@ import com.atmeal.client.R;
 import com.atmeal.client.test_webview_demo.utils.X5WebView;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.ValueCallback;
@@ -38,8 +42,10 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 import com.tencent.smtt.utils.TbsLog;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 
 
 public class BrowserActivity extends Activity {
@@ -52,11 +58,10 @@ public class BrowserActivity extends Activity {
 	private ImageButton mForward;
 	private ImageButton mExit;
 	private ImageButton mHome;
-	private ImageButton mMore;
-	private Button mGo;
-	private EditText mUrl;
+	private ImageButton mPlay;
 
-	private  String mHomeUrl = "http://jqaaa.com/jx.php?url=http://v.youku.com/v_show/id_XMzM1OTU1MzkwOA==.html?spm=a2hww.20027244.m_250379.5~1~3~A&f=51479530";
+
+	private  String mHomeUrl = "http://www.iqiyi.com/",hc="";
 	private static final String TAG = "SdkDemo";
 	private static final int MAX_LENGTH = 14;
 	private boolean mNeedTestPage = false;
@@ -150,7 +155,9 @@ public class BrowserActivity extends Activity {
 		mWebView.setWebViewClient(new WebViewClient() {
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
-				return false;
+				Log.v("网页",url);
+				hc="http://jqaaa.com/jx.php?url="+url;
+				return super.shouldOverrideUrlLoading(view, url);
 			}
 
 			@Override
@@ -162,6 +169,7 @@ public class BrowserActivity extends Activity {
 					changGoForwardButton(view);
 				/* mWebView.showLog("test Log"); */
 			}
+
 		});
 
 		mWebView.setWebChromeClient(new WebChromeClient() {
@@ -296,11 +304,11 @@ public class BrowserActivity extends Activity {
 		webSetting.setDomStorageEnabled(true);
 		webSetting.setJavaScriptEnabled(true);
 		webSetting.setGeolocationEnabled(true);
-		webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
-		webSetting.setAppCachePath(this.getDir("appcache", 0).getPath());
-		webSetting.setDatabasePath(this.getDir("databases", 0).getPath());
-		webSetting.setGeolocationDatabasePath(this.getDir("geolocation", 0)
-				.getPath());
+//		webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
+//		webSetting.setAppCachePath(this.getDir("appcache", 0).getPath());
+//		webSetting.setDatabasePath(this.getDir("databases", 0).getPath());
+//		webSetting.setGeolocationDatabasePath(this.getDir("geolocation", 0)
+//				.getPath());
 		// webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
 		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
 		// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
@@ -322,9 +330,9 @@ public class BrowserActivity extends Activity {
 		mForward = (ImageButton) findViewById(R.id.btnForward1);
 		mExit = (ImageButton) findViewById(R.id.btnExit1);
 		mHome = (ImageButton) findViewById(R.id.btnHome1);
-		mGo = (Button) findViewById(R.id.btnGo1);
-		mUrl = (EditText) findViewById(R.id.editUrl1);
-		mMore = (ImageButton) findViewById(R.id.btnMore);
+//		mGo = (Button) findViewById(R.id.btnGo1);
+//		mUrl = (EditText) findViewById(R.id.editUrl1);
+		mPlay = (ImageButton) findViewById(R.id.btnMore);
 		if (Integer.parseInt(android.os.Build.VERSION.SDK) >= 16) {
 			mBack.setAlpha(disable);
 			mForward.setAlpha(disable);
@@ -350,91 +358,18 @@ public class BrowserActivity extends Activity {
 			}
 		});
 
-		mGo.setOnClickListener(new View.OnClickListener() {
+		mPlay.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				String url = mUrl.getText().toString();
-				mWebView.loadUrl(url);
-				mWebView.requestFocus();
+//				Toast.makeText(BrowserActivity.this, "not completed",
+//						Toast.LENGTH_LONG).show();
+				mWebView.loadUrl(hc);
+				Log.v("缓存网址是",hc);
+				hc="";
 			}
 		});
 
-		mMore.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(BrowserActivity.this, "not completed",
-						Toast.LENGTH_LONG).show();
-			}
-		});
-
-		mUrl.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-
-			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
-				if (hasFocus) {
-					mGo.setVisibility(View.VISIBLE);
-					if (null == mWebView.getUrl())
-						return;
-					if (mWebView.getUrl().equalsIgnoreCase(mHomeUrl)) {
-						mUrl.setText("");
-						mGo.setText("首页");
-						mGo.setTextColor(0X6F0F0F0F);
-					} else {
-						mUrl.setText(mWebView.getUrl());
-						mGo.setText("进入");
-						mGo.setTextColor(0X6F0000CD);
-					}
-				} else {
-					mGo.setVisibility(View.GONE);
-					String title = mWebView.getTitle();
-					if (title != null && title.length() > MAX_LENGTH)
-						mUrl.setText(title.subSequence(0, MAX_LENGTH) + "...");
-					else
-						mUrl.setText(title);
-					InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-					imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-				}
-			}
-
-		});
-
-		mUrl.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void afterTextChanged(Editable s) {
-				// TODO Auto-generated method stub
-
-				String url = null;
-				if (mUrl.getText() != null) {
-					url = mUrl.getText().toString();
-				}
-
-				if (url == null
-						|| mUrl.getText().toString().equalsIgnoreCase("")) {
-					mGo.setText("请输入网址");
-					mGo.setTextColor(0X6F0F0F0F);
-				} else {
-					mGo.setText("进入");
-					mGo.setTextColor(0X6F0000CD);
-				}
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1,
-										  int arg2, int arg3) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void onTextChanged(CharSequence arg0, int arg1, int arg2,
-									  int arg3) {
-				// TODO Auto-generated method stub
-
-			}
-		});
 
 		mHome.setOnClickListener(new View.OnClickListener() {
 
@@ -543,6 +478,7 @@ public class BrowserActivity extends Activity {
 					init();
 					break;
 			}
+
 			super.handleMessage(msg);
 		}
 	};
