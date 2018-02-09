@@ -29,7 +29,6 @@ public class MainActivity extends BaseFragmentActivity {
     /** 我的tab索引 **/
     final int TAB_ME = 2;
     final int TAB_NEAR = 3;
-//    。。。
 
     private MainPageFragment mainPageFragment;
     private OrderPageFragment orderPageFragment;

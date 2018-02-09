@@ -1,18 +1,23 @@
 package com.atmeal.client.test_webview_demo;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Process;
+import android.provider.Browser;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -30,6 +35,8 @@ import com.atmeal.client.R;
 import com.atmeal.client.test_webview_demo.utils.X5WebView;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.ValueCallback;
@@ -39,8 +46,10 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 import com.tencent.smtt.utils.TbsLog;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 
 
 public class BrowserActivity extends Activity {
@@ -155,15 +164,33 @@ public class BrowserActivity extends Activity {
 				return super.shouldOverrideUrlLoading(view, url);
 			}
 
+
 			@Override
 			public void onPageFinished(WebView view, String url) {
 				super.onPageFinished(view, url);
 				// mTestHandler.sendEmptyMessage(MSG_OPEN_TEST_URL);
+
+				if (!mWebView.getSettings().getLoadsImagesAutomatically()) {
+					mWebView.getSettings().setLoadsImagesAutomatically(true);
+				}
+//				this.mBrowser.pageReadyListeners.run(this, (Browser)mWebView, paramString);
+//				if (TextUtils.equals(paramString, tmWebView.getmOriginalUrl()))
+//				{
+//					mWebView.loadUrl("javascript:function descFunction(){var metas=document.getElementsByTagName('meta');for(i=0;i<metas.length;i++){if(metas[i].getAttribute('name')=='Description'||metas[i].getAttribute('name')=='description'){return metas[i].getAttribute('content');}}return ''}");
+//					mWebView.loadUrl("javascript:window.local_kingkr_obj.getDescription(descFunction())");
+//				}
+				mWebView.loadUrl("javascript:function charsetFunction() {var metas=document.getElementsByTagName('meta'); for(i=0;i<metas.length;i++) { if(metas[i].hasAttribute('charset')){return metas[i].getAttribute('charset');} if(metas[i].hasAttribute('http-equiv')){ return metas[i].getAttribute('content');}}return '';}");
+				mWebView.loadUrl("javascript:window.local_kingkr_obj.getCharset(charsetFunction())");
+				mWebView.loadUrl("javascript:function checkqrcodeFunction(){if(typeof qrcodeCallback != \"undefined\"){javascript:window.local_kingkr_obj.hasQRCodeCallback()}}");
+				mWebView.loadUrl("javascript:checkqrcodeFunction()");
+
 				mTestHandler.sendEmptyMessageDelayed(MSG_OPEN_TEST_URL, 5000);// 5s?
 				if (Integer.parseInt(android.os.Build.VERSION.SDK) >= 16)
 					changGoForwardButton(view);
 				/* mWebView.showLog("test Log"); */
 			}
+
+
 		});
 
 		mWebView.setWebChromeClient(new WebChromeClient() {
@@ -188,6 +215,15 @@ public class BrowserActivity extends Activity {
 			public boolean onJsConfirm(WebView arg0, String arg1, String arg2,
 									   JsResult arg3) {
 				return super.onJsConfirm(arg0, arg1, arg2, arg3);
+			}
+
+
+			@Override
+			public void openFileChooser(ValueCallback<Uri> valueCallback, String s, String s1) {
+				super.openFileChooser(valueCallback, s, s1);
+				Log.v("openFileChooser   网页",s+"   openFileChooser          "+s1);
+				String[] arrayOfString = s.split(";");
+				String str2 = arrayOfString[0];
 			}
 
 			View myVideoView;
@@ -293,20 +329,24 @@ public class BrowserActivity extends Activity {
 		webSetting.setUseWideViewPort(true);
 		webSetting.setSupportMultipleWindows(false);
 		// webSetting.setLoadWithOverviewMode(true);
-		webSetting.setAppCacheEnabled(true);
+
+//		webSetting.setAppCacheEnabled(true);
 		// webSetting.setDatabaseEnabled(true);
 		webSetting.setDomStorageEnabled(true);
 		webSetting.setJavaScriptEnabled(true);
 		webSetting.setGeolocationEnabled(true);
 //		webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
+//		String appCachePath = getApplicationContext().getCacheDir().getAbsolutePath();
+//		webSetting.setAppCachePath(appCachePath);
 //		webSetting.setAppCachePath(this.getDir("appcache", 0).getPath());
-//		webSetting.setDatabasePath(this.getDir("databases", 0).getPath());
-//		webSetting.setGeolocationDatabasePath(this.getDir("geolocation", 0)
-//				.getPath());
+		webSetting.setDatabasePath(this.getDir("databases", 0).getPath());
+		webSetting.setGeolocationDatabasePath(this.getDir("databases", 0)
+				.getPath());
 		// webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
 		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
 		// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
 		// webSetting.setPreFectch(true);
+
 		long time = System.currentTimeMillis();
 //		if (mIntentUrl == null) {
 		mWebView.loadUrl(mHomeUrl);
