@@ -34,7 +34,6 @@
 
         <!--代金券-->
         <activity android:name=".ui.mainactivity.VouchersActivity"/>
-
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
@@ -73,6 +72,12 @@
             android:launchMode="singleTask"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/app_name" />
+        <activity
+            android:name=".test_webview_demo.VBrowserActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/app_name" />
+
         <activity android:name=".test_webview_demo.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"/>
 
