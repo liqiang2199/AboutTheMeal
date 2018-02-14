@@ -27,25 +27,26 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_16sp"
-            android:text=""
-            android:textColor="@color/white"
+            android:layout_alignBaseline="@+id/titleback"
+            android:layout_alignBottom="@+id/titleback"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:gravity="center_vertical"
-            android:layout_below="@+id/edit_title"
-            android:layout_centerHorizontal="true" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_16sp" />
 
         <TextView
             android:id="@+id/edit_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_16sp"
-            android:textColor="@color/white"
-            android:visibility="invisible"
+            android:layout_alignBaseline="@+id/title"
+            android:layout_alignBottom="@+id/title"
+            android:layout_alignEnd="@+id/img_title"
+            android:layout_alignRight="@+id/img_title"
             android:layout_gravity="center_horizontal"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/titleback"
-            android:layout_centerHorizontal="true" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_16sp"
+            android:visibility="invisible" />
         <ImageView
             android:id="@+id/img_title"
             android:layout_width="wrap_content"

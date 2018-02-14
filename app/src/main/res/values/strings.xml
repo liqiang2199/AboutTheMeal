@@ -21,6 +21,7 @@
     <string name="fragment_page_cuisine">江浙菜</string>
     <string name="fragment_page_Snack">小吃快餐</string>
     <string name="fragment_page_Western_style_food">西餐</string>
+    <string name="home_address_Positioning">定位中...</string>
 
     <string name="order_home">订单</string>
     <string name="goto_fight_alone">去拼单</string>
@@ -79,5 +80,25 @@
         <item>全屏播放</item>
         <item>文件选择器</item>
     </string-array>
+    
+    
+    <!--代金劵-->
+    <string name="voucher_robbed">抢劵</string>
+
+    <!--收货地址-->
+    <string name="address_contact">联系人</string>
+    <string name="address_contact_hint">请输入联系人</string>
+    <string name="lads">女士</string>
+    <string name="jie_t_man">男士</string>
+    <string name="address_phone">电话</string>
+    <string name="address_phone_hint">请输入电话</string>
+    <string name="address_">地址</string>
+    <string name="address_hint">请输入地址</string>
+    <string name="address_men_num">门牌号</string>
+    <string name="address_men_num_hint">例：6楼502室</string>
+    <string name="address_type_home">家</string>
+    <string name="address_type_com">公司</string>
+    <string name="address_type_school">学校</string>
+
 
 </resources>

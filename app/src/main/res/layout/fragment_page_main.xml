@@ -88,6 +88,7 @@
                         android:drawablePadding="@dimen/margin_5dp"
                         android:drawableTop="@mipmap/zzc"/>
                     <TextView
+                        android:id="@+id/home_jzc"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
@@ -96,6 +97,7 @@
                         android:drawablePadding="@dimen/margin_5dp"
                         android:drawableTop="@mipmap/jzc"/>
                     <TextView
+                        android:id="@+id/home_c_xck"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
@@ -138,13 +140,13 @@
                         android:layout_height="@dimen/margin_130dp"
                         android:src="@mipmap/meisi1"
                         android:scaleType="centerCrop"/>
-                    <TextView
-                        android:layout_width="match_parent"
+
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_10dp"
-                        android:padding="@dimen/margin_5dp"
-                        android:text="@string/app_name"
-                        android:background="@drawable/home_order_tip"/>
+                        android:src="@mipmap/pincan_tip"/>
+
 
                 </LinearLayout>
                 <LinearLayout
@@ -172,6 +174,9 @@
             </LinearLayout>
             <include
                 layout="@layout/include_10_layout_linear"/>
+
+            <include
+                layout="@layout/include_home_shoplist"/>
 
         </LinearLayout>
 

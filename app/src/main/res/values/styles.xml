@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/style_title</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
@@ -18,6 +18,12 @@
     <style name="text_size_16_white">
         <item name="android:textSize">@dimen/text_size_16sp</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="text_size_14_white">
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+        <item name="android:textColor">@color/Gainsboro</item>
         <item name="android:layout_gravity">center_vertical</item>
     </style>
 

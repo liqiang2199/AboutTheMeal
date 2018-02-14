@@ -73,6 +73,14 @@ public class IntentCommon {
 
 
     }
+    public void StartIntent(Context context,Class<?> activityClass,String key,String value){
+
+        intent.setClass(context,activityClass);
+        intent.putExtra(key,value);
+        context.startActivity(intent);
+
+
+    }
 
     /**
      * 评估界面

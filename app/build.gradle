@@ -31,6 +31,12 @@ android {
             dirs 'libs' //就是你放aar的目录地址
         }
     }
+    allprojects {
+        repositories {
+            jcenter()
+            // 或者 mavenCentral()
+        }
+    }
 }
 
 dependencies {
@@ -55,5 +61,7 @@ dependencies {
 //    compile name: 'SMSSDKGUI-3.0.0', ext: 'aar'
 //    compile files('libs/MobCommons-2017.0607.1736.jar')
     compile files('libs/tbs_sdk_thirdapp_v3.5.0.1004_43500_sharewithdownload_withoutGame_obfs_20170801_113025.jar')
+
+    compile 'com.amap.api:location:latest.integration'
 }
 

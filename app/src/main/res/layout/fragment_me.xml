@@ -153,6 +153,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/liner_address"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/pad_48dp"
                 android:orientation="horizontal"

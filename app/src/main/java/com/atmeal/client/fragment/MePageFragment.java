@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.atmeal.client.R;
@@ -19,6 +20,7 @@ import com.atmeal.client.loginactivity.HeaderSetActivity;
 import com.atmeal.client.loginactivity.LoginActivity;
 import com.atmeal.client.meactivity.SetActivity;
 import com.atmeal.client.test_webview_demo.BrowserActivity;
+import com.atmeal.client.ui.meactivity.AddAdressActivity;
 import com.atmeal.client.utils.UtilTools;
 import com.atmeal.client.weigth.myImageView;
 import com.squareup.picasso.Picasso;
@@ -35,6 +37,7 @@ public class MePageFragment extends BaseMealFragment {
     private ImageView image_set;
     private TextView login_is_no,fragvideo;
     private myImageView iv_head_set;
+    private LinearLayout liner_address;
 
     @Nullable
     @Override
@@ -52,12 +55,16 @@ public class MePageFragment extends BaseMealFragment {
         login_is_no = (TextView) meView.findViewById(R.id.login_is_no);
         fragvideo=meView.findViewById(R.id.fragvideo);
         iv_head_set = (myImageView)meView.findViewById(R.id.iv_head_set);
+
+        liner_address = meView.findViewById(R.id.liner_address);
+
         login_TextTip();
 
         InitOnClick(image_set);
         InitOnClick(login_is_no);
         InitOnClick(iv_head_set);
         InitOnClick(fragvideo);
+        InitOnClick(liner_address);
     }
 
     @Override
@@ -86,6 +93,10 @@ public class MePageFragment extends BaseMealFragment {
                     case R.id.fragvideo:
                         //视频跳转
                         IntentCommon.getIstance().StartIntent(getContext(),BrowserActivity.class);
+                        break;
+                    case R.id.liner_address:
+                        //收货地址
+                        IntentCommon.getIstance().StartIntent(getContext(),AddAdressActivity.class);
                         break;
                 }
             }
