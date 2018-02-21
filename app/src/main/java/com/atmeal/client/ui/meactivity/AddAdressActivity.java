@@ -8,13 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.atmeal.client.R;
 import com.atmeal.client.base.BaseFragmentActivity;
+import com.atmeal.client.been.busbeen.LoginBusBeen;
+import com.atmeal.client.been.jsonbeen.LoginBeen;
 import com.atmeal.client.common.SPUtilsCommon;
+import com.atmeal.client.common.StringCommon;
 import com.atmeal.client.common.UrlCommon;
 import com.atmeal.client.http.OkHttpMannager;
 import com.atmeal.client.http.OkHttp_CallResponse;
+import com.atmeal.client.utils.UtilTools;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONObject;
 
 import okhttp3.Call;
@@ -35,6 +41,9 @@ public class AddAdressActivity extends BaseFragmentActivity implements OkHttp_Ca
     private EditText address_phoneNum;
     private EditText address_door_num;
     private Button submit_but;
+
+    private String textlads_jt = "女士";
+    private String addressTag = "1";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,6 +68,11 @@ public class AddAdressActivity extends BaseFragmentActivity implements OkHttp_Ca
         submit_but = findViewById(R.id.submit_but);
 
         onClick(submit_but);
+        onClick(text_lads);
+        onClick(text_jtm);
+        onClick(text_home);
+        onClick(address_type);
+        onClick(address_school);
     }
 
     private void onClick(View view){
@@ -69,6 +83,21 @@ public class AddAdressActivity extends BaseFragmentActivity implements OkHttp_Ca
                     case R.id.submit_but:
                         http_Address();
                         break;
+                    case R.id.text_lads:
+                        textlads_jt= "女士";
+                        break;
+                    case R.id.text_jtm:
+                        textlads_jt= "男士";
+                        break;
+                    case R.id.text_home:
+                        addressTag = "1";
+                        break;
+                    case R.id.address_type:
+                        addressTag = "2";
+                        break;
+                    case R.id.address_school:
+                        addressTag = "3";
+                        break;
                 }
             }
         });
@@ -78,10 +107,16 @@ public class AddAdressActivity extends BaseFragmentActivity implements OkHttp_Ca
         String name = address_contact.getText().toString();
         String phoneNum = address_phoneNum.getText().toString();
         String door = address_door_num.getText().toString();
+        if (!UtilTools.isPhoneHomeNum(phoneNum)){
+            StringCommon.String_Toast(context,"输入的电话号码不正确");
+            return;
+        }
 
-        String addaddress = UrlCommon.addAddress+"?usertoken="+ SPUtilsCommon.get(context,"userToken","").toString()
-                +"&addressName="+address_contact.getText().toString()+"&addressPhone="+phoneNum+"&addressSex="+"女士"
-                +"&addressDetail="+"ererererer"+"&addressTag="+"1"+"&addressDoorNum="+"5楼4号";
+        String addaddress = UrlCommon.addAddress+"?usertoken="+
+                SPUtilsCommon.get(context,"userToken","").toString()
+                +"&addressName="+name+
+                "&addressPhone="+phoneNum+"&addressSex="+textlads_jt
+                +"&addressDetail="+"ererererer"+"&addressTag="+"1"+"&addressDoorNum="+door;
 
         OkHttpMannager.getInstance().Post_Data(addaddress,context,
                 this,true,"AddAddress");
@@ -89,7 +124,13 @@ public class AddAdressActivity extends BaseFragmentActivity implements OkHttp_Ca
 
     @Override
     public void OkHttp_ResponseSuccse(Call call, Response response, JSONObject jsonObject, String tag) {
+        try {
+            String tipMessge = jsonObject.getString("tipMessge");
+            StringCommon.String_Toast(context,tipMessge);
+            finish();
+        }catch (Exception e){
 
+        }
     }
 
     @Override

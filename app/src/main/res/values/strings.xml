@@ -72,6 +72,8 @@
     <string name="go_fight_alone">去拼单</string>
     <string name="_fight_alone">团</string>
     <string name="discount_text_tip">劵</string>
+    <string name="reservation_Private_Room">包间</string>
+    <string name="reservation_">订座</string>
 
     <string name="tag"> (X5内核功能演示)</string>
     <string name="tip">普通接入直接参考“APPApplication” “BrowserActivity” “X5WebView”中相关实现即可</string>

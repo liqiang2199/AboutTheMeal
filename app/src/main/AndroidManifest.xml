@@ -37,6 +37,8 @@
 
         <activity android:name=".ui.mainactivity.JZCActivity" android:label="江浙菜"/>
         <activity android:name=".ui.meactivity.AddAdressActivity" android:label="添加地址"/>
+        <activity android:name=".ui.mainactivity.TakeOutActivity" android:label="外卖"/>
+        <activity android:name=".ui.mainactivity.ReservationActivity" android:label="订座"/>
 
         <activity
             android:name="com.mob.tools.MobUIShell"

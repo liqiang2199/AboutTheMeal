@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.amap.api.location.AMapLocation;
 import com.atmeal.client.R;
 import com.atmeal.client.adapter.NearListAdapter;
 import com.atmeal.client.base.BaseMealFragment;
@@ -16,7 +17,9 @@ import com.atmeal.client.been.jsonbeen.ShopListBeen;
 import com.atmeal.client.common.UrlCommon;
 import com.atmeal.client.http.OkHttpMannager;
 import com.atmeal.client.http.OkHttp_CallResponse;
+import com.atmeal.client.ihandler.IHandlerAMapLocation;
 import com.atmeal.client.loginactivity.LoginActivity;
+import com.atmeal.client.utils.AMapLocationUtils;
 import com.atmeal.client.utils.UtilTools;
 
 import org.json.JSONArray;
@@ -33,16 +36,18 @@ import okhttp3.Response;
  * 附近
  */
 
-public class NearPageFragment extends BaseMealFragment implements OkHttp_CallResponse{
+public class NearPageFragment extends BaseMealFragment implements OkHttp_CallResponse,IHandlerAMapLocation {
 
     private View nearView;
     private RecyclerView recycler_view;
+    private TextView title_near;
 
     private TextView text_host,text_bread,text_northeastern,text_snack,text_zjc,text_scc;
     private ArrayList<Integer> textid = new ArrayList<>();
     private ArrayList<ShopListBeen> shopListBeens = new ArrayList<>();
     private int shop_type = 1;
     private int pageIndex = 1;
+    private AMapLocationUtils aMapLocationUtils;//定位
 
     @Nullable
     @Override
@@ -72,6 +77,9 @@ public class NearPageFragment extends BaseMealFragment implements OkHttp_CallRes
         text_snack = (TextView)nearView.findViewById(R.id.text_snack);
         text_zjc = (TextView)nearView.findViewById(R.id.text_zjc);
         text_scc = (TextView)nearView.findViewById(R.id.text_scc);
+        title_near = (TextView)nearView.findViewById(R.id.title_near);
+
+        aMapLocationUtils = new AMapLocationUtils(getContext(),this);
 
         OnClickView(text_host);
         OnClickView(text_bread);
@@ -201,5 +209,15 @@ public class NearPageFragment extends BaseMealFragment implements OkHttp_CallRes
     @Override
     public void OkHttp_CallToastShow(String msg, String tag) {
 
+    }
+
+    @Override
+    public void aMapLocationSure(AMapLocation amapLocation) {
+        title_near.setText(amapLocation.getCity());
+    }
+
+    @Override
+    public void aMapLocationError(int errorCode, String errorInfo) {
+        title_near.setText("定位失败");
     }
 }
