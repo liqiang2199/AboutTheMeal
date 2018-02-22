@@ -24,14 +24,14 @@ import com.atmeal.client.base.BaseMealFragment;
 
 public class OrderPageFragment extends BaseMealFragment{
     private View orderView;
-    private RecyclerView recycler_view;
-    private LinearLayout liner_find;
+//    private RecyclerView recycler_view;
+//    private LinearLayout liner_find;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (orderView == null){
-            orderView = inflater.inflate(R.layout.fragment_order,null);
+            orderView = inflater.inflate(R.layout.fragment_order_page,null);
         }
         InitView();
         return orderView;
@@ -39,14 +39,14 @@ public class OrderPageFragment extends BaseMealFragment{
 
     @Override
     public void InitView() {
-        liner_find = (LinearLayout)orderView.findViewById(R.id.liner_find);
-        liner_find.setVisibility(View.GONE);
-
-        recycler_view = (RecyclerView)orderView.findViewById(R.id.recycler_view);
-        OrderListAdapter orderListAdapter = new OrderListAdapter();
-        GridLayoutManager layoutmanager = new GridLayoutManager(getActivity(),2);
-        //设置RecyclerView 布局
-        recycler_view.setLayoutManager(layoutmanager);
-        recycler_view.setAdapter(orderListAdapter);
+//        liner_find = (LinearLayout)orderView.findViewById(R.id.liner_find);
+//        liner_find.setVisibility(View.GONE);
+//
+//        recycler_view = (RecyclerView)orderView.findViewById(R.id.recycler_view);
+//        OrderListAdapter orderListAdapter = new OrderListAdapter();
+//        GridLayoutManager layoutmanager = new GridLayoutManager(getActivity(),2);
+//        //设置RecyclerView 布局
+//        recycler_view.setLayoutManager(layoutmanager);
+//        recycler_view.setAdapter(orderListAdapter);
     }
 }
