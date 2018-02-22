@@ -40,6 +40,8 @@
         <activity android:name=".ui.mainactivity.TakeOutActivity" android:label="外卖"/>
         <activity android:name=".ui.mainactivity.ReservationActivity" android:label="订座"/>
 
+        <activity android:name=".ui.meactivity.AdressListActivity" android:label="地址列表"/>
+
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
