@@ -7,7 +7,7 @@
         layout="@layout/include_titile_back_common"/>
 
 
-    <ScrollView
+   <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:overScrollMode="never">
@@ -17,10 +17,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <include
                 layout="@layout/include_recyclerview_list"/>
-
 
             <include
                 layout="@layout/include_btn_common"/>

@@ -36,6 +36,7 @@
                 android:layout_weight="0.6"
                 android:layout_height="@dimen/pad_48dp"
                 android:layout_marginLeft="@dimen/margin_15dp"
+                android:lines="1"
                 android:hint="@string/address_contact_hint" />
 
         </LinearLayout>
@@ -47,6 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:layout_marginBottom="@dimen/margin_5dp"
             android:gravity="center">
 
             <TextView
@@ -54,6 +57,7 @@
                 android:layout_width="@dimen/margin_80dp"
                 android:layout_height="@dimen/pad_48dp"
                 android:text="@string/lads"
+                android:background="@drawable/home_order_tip"
                 android:gravity="center"/>
 
             <TextView
@@ -88,6 +92,7 @@
                 android:layout_weight="0.6"
                 android:layout_height="@dimen/pad_48dp"
                 android:layout_marginLeft="@dimen/margin_15dp"
+                android:lines="1"
                 android:hint="@string/address_phone_hint" />
 
         </LinearLayout>
@@ -109,11 +114,13 @@
                 android:text="@string/address_" />
 
             <EditText
+                android:id="@+id/edit_address"
                 style="@style/edit_login"
                 android:layout_width="0dp"
                 android:layout_weight="0.6"
                 android:layout_height="@dimen/pad_48dp"
                 android:layout_marginLeft="@dimen/margin_15dp"
+                android:lines="1"
                 android:hint="@string/address_hint" />
 
         </LinearLayout>
@@ -141,6 +148,7 @@
                 android:layout_weight="0.6"
                 android:layout_height="@dimen/pad_48dp"
                 android:layout_marginLeft="@dimen/margin_15dp"
+                android:lines="1"
                 android:hint="@string/address_men_num_hint" />
 
         </LinearLayout>
@@ -172,6 +180,7 @@
                     android:layout_width="@dimen/margin_80dp"
                     android:layout_height="@dimen/pad_48dp"
                     android:text="@string/address_type_home"
+                    android:background="@drawable/home_order_tip"
                     android:gravity="center"/>
 
                 <TextView
