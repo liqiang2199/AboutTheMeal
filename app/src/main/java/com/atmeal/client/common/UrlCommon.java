@@ -20,4 +20,5 @@ public class UrlCommon {
     public static String GetShopList = "/GetShopList";//更换密码
     public static String VouchersList = "/VouchersList";//代金卷
     public static String addAddress = "/addAddress";//添加收货地址
+    public static String getAddressList = "/getAddressList";//获取收货地址
 }
