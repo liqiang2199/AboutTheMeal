@@ -71,7 +71,10 @@
             android:layout_height="wrap_content"
             android:text="@string/me_wallet_set_pay"
             android:textSize="@dimen/text_size_14sp"
-            android:textColor="@color/Black"/>
+            android:drawablePadding="@dimen/margin_5dp"
+            android:drawableLeft="@mipmap/wallet_pay_set"
+            android:textColor="@color/Black"
+            android:gravity="center_vertical"/>
 
         <include
             layout="@layout/include_rigth_btn"/>
