@@ -26,6 +26,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 
+import com.atmeal.client.common.SPUtilsCommon;
 import com.atmeal.client.common.StringCommon;
 
 import org.json.JSONException;
@@ -536,6 +537,24 @@ public class UtilTools {
         int height=wm.getDefaultDisplay().getHeight();//手机屏幕的高度
         int result[] = {width,height};
         return result;
+    }
+
+    /**
+     * 获取保存的值
+     * @param context
+     * @param key
+     * @return
+     */
+    public static String getSputils(Context context,String key){
+        String msg = "";
+        if (UtilTools.isStringNull(key)){
+            return msg;
+        }
+        if (!SPUtilsCommon.contains(context,key)){
+            return msg;
+        }
+        msg = SPUtilsCommon.get(context,key,"").toString();
+        return msg;
     }
 
 }

@@ -49,7 +49,7 @@
     <include
         layout="@layout/include_1_layout_linear"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/pad_48dp"
         android:text="@string/common"
         android:textSize="@dimen/text_size_14sp"
@@ -58,5 +58,17 @@
         android:textColor="@color/Black"/>
     <include
         layout="@layout/include_1_layout_linear"/>
+    <include
+        layout="@layout/include_10_layout_linear"/>
+
+    <TextView
+        android:id="@+id/text_quite_login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pad_48dp"
+        android:text="@string/app_quite"
+        android:textSize="@dimen/text_size_14sp"
+        android:padding="@dimen/margin_10dp"
+        android:gravity="center_vertical|center"
+        android:textColor="@color/red"/>
 
 </LinearLayout>

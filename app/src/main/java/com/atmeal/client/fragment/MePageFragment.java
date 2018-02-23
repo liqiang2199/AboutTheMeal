@@ -13,7 +13,9 @@ import android.widget.TextView;
 import com.atmeal.client.R;
 import com.atmeal.client.base.BaseMealFragment;
 import com.atmeal.client.been.busbeen.LoginBusBeen;
+import com.atmeal.client.been.busbeen.UpHeaderBus;
 import com.atmeal.client.common.IntentCommon;
+import com.atmeal.client.common.LogCommon;
 import com.atmeal.client.common.SPUtilsCommon;
 import com.atmeal.client.common.StringCommon;
 import com.atmeal.client.loginactivity.HeaderSetActivity;
@@ -85,10 +87,21 @@ public class MePageFragment extends BaseMealFragment {
                         break;
                     case R.id.login_is_no:
                         //登录
-                        IntentCommon.getIstance().StartIntent(getContext(),LoginActivity.class);
+                        if (SPUtilsCommon.contains(getContext(),"userToken")){
+                            if (UtilTools.isStringNull(SPUtilsCommon.get(getContext(),"userToken","").toString())){
+                                IntentCommon.getIstance().StartIntent(getContext(),LoginActivity.class);
+                            }
+                        }else{
+                            IntentCommon.getIstance().StartIntent(getContext(),LoginActivity.class);
+                        }
+
                         break;
                     case R.id.iv_head_set:
                         //头像设置
+                        if (UtilTools.isStringNull(UtilTools.getSputils(getContext(),"userToken"))){
+                            StringCommon.String_Toast(getContext(),"请先登录");
+                            return;
+                        }
                         IntentCommon.getIstance().StartIntent(getContext(),HeaderSetActivity.class);
                         break;
                     case R.id.fragvideo:
@@ -97,6 +110,10 @@ public class MePageFragment extends BaseMealFragment {
                         break;
                     case R.id.liner_address:
                         //收货地址
+                        if (UtilTools.isStringNull(UtilTools.getSputils(getContext(),"userToken"))){
+                            StringCommon.String_Toast(getContext(),"请先登录");
+                            return;
+                        }
                         IntentCommon.getIstance().StartIntent(getContext(),AdressListActivity.class);
                         break;
                 }
@@ -111,7 +128,7 @@ public class MePageFragment extends BaseMealFragment {
 //                login_is_no.setOnClickListener(null);
             }else{
                 login_is_no.setText("未登录");
-
+                iv_head_set.setImageResource(R.mipmap.bg_like_users_extend_pressed);
             }
         }
 //        Picasso.with(getContext()).load("http://www.cup812.cn/fightalone/uploadheader/1111111.jpg").into(iv_head_set);
@@ -122,6 +139,8 @@ public class MePageFragment extends BaseMealFragment {
                     .error(R.mipmap.bg_like_users_extend_pressed)
                     .placeholder(R.mipmap.bg_like_users_extend_pressed)
                     .into(iv_head_set);
+        }else{
+            iv_head_set.setImageResource(R.mipmap.bg_like_users_extend_pressed);
         }
 
     }
@@ -129,5 +148,21 @@ public class MePageFragment extends BaseMealFragment {
     @Subscribe
     public void onMessageEvent(LoginBusBeen event) {
         login_TextTip();
-    };
+    }
+
+    @Subscribe
+    public void onMessageEvent(UpHeaderBus event) {
+        if (event != null){
+            String header = event.headerUrl;
+            LogCommon.LogShowPrint("上传头像 地址  11  "+header);
+            if (!UtilTools.isStringNull(event.headerUrl)){
+                SPUtilsCommon.put(getContext(),"userImage",header);
+                Picasso.with(getContext())
+                        .load(header)
+                        .error(R.mipmap.bg_like_users_extend_pressed)
+                        .placeholder(R.mipmap.bg_like_users_extend_pressed)
+                        .into(iv_head_set);
+            }
+        }
+    }
 }

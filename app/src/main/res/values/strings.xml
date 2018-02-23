@@ -42,6 +42,7 @@
     <string name="bind_phone">绑定手机号</string>
     <string name="login_phone_password">登录密码</string>
     <string name="common">通用</string>
+    <string name="app_quite">退出登录</string>
     <string name="me_head_photo">相册选取</string>
     <string name="me_head_camera">拍照</string>
 

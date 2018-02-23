@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.atmeal.client.R;
 import com.atmeal.client.base.BaseFragmentActivity;
+import com.atmeal.client.been.busbeen.UpHeaderBus;
 import com.atmeal.client.been.httpbeen.HttpBeen;
 import com.atmeal.client.common.DialogCommon;
 import com.atmeal.client.common.LogCommon;
@@ -34,6 +35,8 @@ import com.atmeal.client.http.OkHttp_CallResponse;
 import com.atmeal.client.meactivity.setactivity.ChangeBindPhoneActivity;
 import com.atmeal.client.utils.UtilTools;
 
+import org.greenrobot.eventbus.EventBus;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -446,7 +449,7 @@ public class HeaderSetActivity extends BaseFragmentActivity implements OkHttp_Ca
             public void onResponse(Call call, Response response) throws IOException {
 
 
-                String msg = response.body().string();
+                final String msg = response.body().string();
                 System.out.println("上传照片成功：response = " +msg);
                 final HttpBeen httpBeen = JSON.parseObject(msg,HttpBeen.class);
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -455,6 +458,17 @@ public class HeaderSetActivity extends BaseFragmentActivity implements OkHttp_Ca
                         DialogCommon.getIstance().MyDialogCanle();
                         StringCommon.String_Toast(context,httpBeen.getTipMessge());
                         if (httpBeen .getCode() == 200){
+                            try {
+                                JSONObject jsonObject = new JSONObject(msg);
+                                String data = jsonObject.getString("data");
+                                //
+                                LogCommon.LogShowPrint("     获取头像地址 data      "+data);
+                                EventBus.getDefault().post(new UpHeaderBus(data));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                LogCommon.LogShowPrint("     获取头像地址 异常      "+e);
+                            }
+
                             finish();
                         }
                     }

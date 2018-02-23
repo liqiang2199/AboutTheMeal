@@ -22,10 +22,10 @@ public abstract class BaseMealFragment extends Fragment {
         EventBus.getDefault().register(this);
     }
 
-    @Subscribe
+
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onDestroy() {
+        super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
 }

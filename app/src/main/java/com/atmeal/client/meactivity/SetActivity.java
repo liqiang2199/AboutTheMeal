@@ -8,9 +8,15 @@ import android.widget.TextView;
 
 import com.atmeal.client.R;
 import com.atmeal.client.base.BaseFragmentActivity;
+import com.atmeal.client.been.busbeen.LoginBusBeen;
+import com.atmeal.client.common.DialogCommon;
 import com.atmeal.client.common.IntentCommon;
+import com.atmeal.client.common.SPUtilsCommon;
 import com.atmeal.client.meactivity.setactivity.ChangeBindPhoneActivity;
 import com.atmeal.client.meactivity.setactivity.ChangePasswordLoginActivity;
+import com.atmeal.client.utils.UtilTools;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by Administrator on 2018/1/16.
@@ -20,7 +26,7 @@ import com.atmeal.client.meactivity.setactivity.ChangePasswordLoginActivity;
 public class SetActivity extends BaseFragmentActivity {
 
     private LinearLayout change_bind_phone;
-    private TextView text_changePassWord;
+    private TextView text_changePassWord,text_quite_login;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,9 +42,17 @@ public class SetActivity extends BaseFragmentActivity {
 
         change_bind_phone = (LinearLayout) findViewById(R.id.change_bind_phone);
         text_changePassWord = (TextView) findViewById(R.id.text_changePassWord);
+        text_quite_login = (TextView) findViewById(R.id.text_quite_login);
 
         OnClickView(change_bind_phone);
         OnClickView(text_changePassWord);
+        OnClickView(text_quite_login);
+
+        if (UtilTools.isStringNull(UtilTools.getSputils(context,"userToken"))){
+            text_quite_login.setVisibility(View.GONE);
+        }else{
+            text_quite_login.setVisibility(View.VISIBLE);
+        }
     }
 
     private void OnClickView(View view){
@@ -53,6 +67,15 @@ public class SetActivity extends BaseFragmentActivity {
                     case R.id.text_changePassWord:
                         //改变登录的密码
                         IntentCommon.getIstance().StartIntent(context, ChangePasswordLoginActivity.class);
+                        break;
+                    case R.id.text_quite_login:
+                        //退出登录
+                        SPUtilsCommon.put(context,"userToken","");
+                        SPUtilsCommon.put(context,"userName","");
+                        SPUtilsCommon.put(context,"userImage","");
+                        SPUtilsCommon.put(context,"userPhone","");
+                        EventBus.getDefault().post(new LoginBusBeen());
+                        finish();
                         break;
                 }
             }
