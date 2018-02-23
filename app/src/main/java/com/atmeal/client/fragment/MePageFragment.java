@@ -63,6 +63,7 @@ public class MePageFragment extends BaseMealFragment {
 
         login_TextTip();
 
+
         InitOnClick(image_set);
         InitOnClick(login_is_no);
         InitOnClick(iv_head_set);
