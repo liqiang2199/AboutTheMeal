@@ -81,7 +81,7 @@ public class AddAdressActivity extends BaseFragmentActivity implements OkHttp_Ca
 
         String addaddress = UrlCommon.addAddress+"?usertoken="+ SPUtilsCommon.get(context,"userToken","").toString()
                 +"&addressName="+address_contact.getText().toString()+"&addressPhone="+phoneNum+"&addressSex="+"女士"
-                +"&addressDetail="+"ererererer"+"&addressTag="+"1"+"&addressDoorNum="+"5楼4号";
+                +"&addressDetail="+"dadfa"+"&addressTag="+"1"+"&addressDoorNum="+"5楼4号";
 
         OkHttpMannager.getInstance().Post_Data(addaddress,context,
                 this,true,"AddAddress");
