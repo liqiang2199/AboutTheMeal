@@ -85,6 +85,7 @@ public class AddAdressActivity extends BaseFragmentActivity implements OkHttp_Ca
                         break;
                     case R.id.text_lads:
                         textlads_jt= "女士";
+
                         break;
                     case R.id.text_jtm:
                         textlads_jt= "男士";
