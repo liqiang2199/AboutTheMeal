@@ -26,6 +26,8 @@ import com.atmeal.client.http.OkHttpMannager;
 import com.atmeal.client.http.OkHttp_CallResponse;
 import com.atmeal.client.ihandler.IHandlerAMapLocation;
 import com.atmeal.client.ui.mainactivity.JZCActivity;
+import com.atmeal.client.ui.mainactivity.ReservationActivity;
+import com.atmeal.client.ui.mainactivity.TakeOutActivity;
 import com.atmeal.client.ui.mainactivity.VouchersActivity;
 import com.atmeal.client.utils.AMapLocationUtils;
 import com.atmeal.client.utils.UtilTools;
@@ -52,7 +54,7 @@ public class MainPageFragment extends BaseMealFragment implements OkHttp_CallRes
     private RecyclerView recycle_shop;
 
     private TextView page_vouchers,home_jzc,home_c_xck;
-    private TextView home_address;
+    private TextView home_address,main_take_out,main_reservation;
     private AMapLocationUtils aMapLocationUtils;//定位
 
     private ArrayList<String> images = new ArrayList<>();
@@ -81,6 +83,8 @@ public class MainPageFragment extends BaseMealFragment implements OkHttp_CallRes
         page_vouchers = (TextView) mainView.findViewById(R.id.page_vouchers);//代金券
         home_jzc = (TextView) mainView.findViewById(R.id.home_jzc);//江浙菜
         home_c_xck = (TextView) mainView.findViewById(R.id.home_c_xck);//小吃快餐
+        main_take_out = (TextView) mainView.findViewById(R.id.main_take_out);//外卖
+        main_reservation = (TextView) mainView.findViewById(R.id.main_reservation);//订座
 
         home_address = (TextView) mainView.findViewById(R.id.home_address);//显示地址
 
@@ -95,6 +99,8 @@ public class MainPageFragment extends BaseMealFragment implements OkHttp_CallRes
         OnClickView(page_vouchers);
         OnClickView(home_jzc);
         OnClickView(home_c_xck);
+        OnClickView(main_take_out);
+        OnClickView(main_reservation);
     }
 
     private void OnClickView(View view){
@@ -113,6 +119,14 @@ public class MainPageFragment extends BaseMealFragment implements OkHttp_CallRes
                     case R.id.home_c_xck:
                         //小吃快餐
                         IntentCommon.getIstance().StartIntent(getContext(),JZCActivity.class,"CaiType","4");
+                        break;
+                    case R.id.main_take_out:
+                        //外卖
+                        IntentCommon.getIstance().StartIntent(getContext(),TakeOutActivity.class);
+                        break;
+                    case R.id.main_reservation:
+                        //订座
+                        IntentCommon.getIstance().StartIntent(getContext(),ReservationActivity.class);
                         break;
                 }
             }

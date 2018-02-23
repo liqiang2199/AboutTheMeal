@@ -21,6 +21,7 @@ import com.atmeal.client.loginactivity.LoginActivity;
 import com.atmeal.client.meactivity.SetActivity;
 import com.atmeal.client.test_webview_demo.BrowserActivity;
 import com.atmeal.client.ui.meactivity.AddAdressActivity;
+import com.atmeal.client.ui.meactivity.AdressListActivity;
 import com.atmeal.client.utils.UtilTools;
 import com.atmeal.client.weigth.myImageView;
 import com.squareup.picasso.Picasso;
@@ -96,7 +97,7 @@ public class MePageFragment extends BaseMealFragment {
                         break;
                     case R.id.liner_address:
                         //收货地址
-                        IntentCommon.getIstance().StartIntent(getContext(),AddAdressActivity.class);
+                        IntentCommon.getIstance().StartIntent(getContext(),AdressListActivity.class);
                         break;
                 }
             }

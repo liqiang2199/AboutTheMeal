@@ -72,6 +72,8 @@
     <string name="go_fight_alone">去拼单</string>
     <string name="_fight_alone">团</string>
     <string name="discount_text_tip">劵</string>
+    <string name="reservation_Private_Room">包间</string>
+    <string name="reservation_">订座</string>
 
     <string name="tag"> (X5内核功能演示)</string>
     <string name="tip">普通接入直接参考“APPApplication” “BrowserActivity” “X5WebView”中相关实现即可</string>
@@ -100,5 +102,18 @@
     <string name="address_type_com">公司</string>
     <string name="address_type_school">学校</string>
 
+
+    <!--订单 界面-->
+    <string name="order_dfk">待付款</string>
+    <string name="order_dfh">待发货</string>
+    <string name="order_dsh">待收货</string>
+    <string name="order_dpj">待评价</string>
+
+    <string name="order_me">我的订单</string>
+    <string name="order_all">全部订单</string>
+    <string name="order_no_three_month">近三个月无订单记录</string>
+    <string name="order_three_month_ago">查看三个月以前的订单记录</string>
+    <string name="order_collection">我的收藏</string>
+    <string name="order_collection_no">暂时还没有收藏</string>
 
 </resources>
