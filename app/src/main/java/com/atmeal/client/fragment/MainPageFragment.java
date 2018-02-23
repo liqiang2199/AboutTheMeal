@@ -1,5 +1,6 @@
 package com.atmeal.client.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,7 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -31,6 +34,7 @@ import com.atmeal.client.ui.mainactivity.TakeOutActivity;
 import com.atmeal.client.ui.mainactivity.VouchersActivity;
 import com.atmeal.client.utils.AMapLocationUtils;
 import com.atmeal.client.utils.UtilTools;
+import com.atmeal.client.weigth.ObservableScrollView;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 
@@ -47,11 +51,16 @@ import okhttp3.Response;
  * Created by Administrator on 2018/1/14.
  */
 
-public class MainPageFragment extends BaseMealFragment implements OkHttp_CallResponse,IHandlerAMapLocation {
+public class MainPageFragment extends BaseMealFragment implements OkHttp_CallResponse,IHandlerAMapLocation
+,ObservableScrollView.OnObservableScrollViewListener {
     private View mainView;
     private Banner banner;
     private ImageView image_1,image_2,image_3;
     private RecyclerView recycle_shop;
+
+    private ObservableScrollView mObservableScrollView;
+    private int mHeight;
+    private LinearLayout mHeaderContent;
 
     private TextView page_vouchers,home_jzc,home_c_xck;
     private TextView home_address,main_take_out,main_reservation;
@@ -92,9 +101,27 @@ public class MainPageFragment extends BaseMealFragment implements OkHttp_CallRes
         aMapLocationUtils = new AMapLocationUtils(getContext(),this);
 
 
+        //初始化控件
+        mObservableScrollView = (ObservableScrollView) mainView.findViewById(R.id.sv_main_content);
+        mHeaderContent = mainView.findViewById(R.id.mHeaderContent);
+
+
         OkHttpMannager.getInstance().Post_Data(UrlCommon.getadv,getContext(),this,true,"adv");
         OkHttpMannager.getInstance().Post_Data(UrlCommon.Recommend,getContext(),this,false,"Recommend");
         Http_GetShopList();
+
+        //获取标题栏高度
+        ViewTreeObserver viewTreeObserver = banner.getViewTreeObserver();
+        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                banner.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                mHeight = banner.getHeight() - mHeaderContent.getHeight();//这里取的高度应该为图片的高度-标题栏
+                //注册滑动监听
+                mObservableScrollView.setOnObservableScrollViewListener(MainPageFragment.this);
+            }
+        });
+
 
         OnClickView(page_vouchers);
         OnClickView(home_jzc);
@@ -251,5 +278,23 @@ public class MainPageFragment extends BaseMealFragment implements OkHttp_CallRes
     @Override
     public void aMapLocationError(int errorCode, String errorInfo) {
         home_address.setText("定位失败");
+    }
+
+    //标题的颜色变化
+    @Override
+    public void onObservableScrollViewListener(int l, int t, int oldl, int oldt) {
+        if (t <= 0) {
+            //顶部图处于最顶部，标题栏透明
+            mHeaderContent.setBackgroundColor(Color.argb(0, 0, 185, 198));
+        } else if (t > 0 && t < mHeight) {
+            //滑动过程中，渐变
+            float scale = (float) t / mHeight;//算出滑动距离比例
+            float alpha = (255 * scale);//得到透明度
+            mHeaderContent.setBackgroundColor(Color.argb((int) alpha, 0, 185, 198));
+        } else {
+            //过顶部图区域，标题栏定色
+            mHeaderContent.setBackgroundColor(Color.argb(255, 0, 185, 198));
+        }
+
     }
 }

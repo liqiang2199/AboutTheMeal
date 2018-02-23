@@ -4,12 +4,15 @@
     <dimen name="text_size_14sp">14sp</dimen>
     <dimen name="text_size_16sp">16sp</dimen>
     <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="text_size_26sp">26sp</dimen>
     <dimen name="pad_48dp">48dp</dimen>
     <dimen name="margin_10dp">10dp</dimen>
+    <dimen name="margin_25dp">25dp</dimen>
     <dimen name="margin_5dp">5dp</dimen>
     <dimen name="margin_15dp">15dp</dimen>
     <dimen name="margin_30dp">30dp</dimen>
     <dimen name="margin_130dp">130dp</dimen>
+    <dimen name="margin_110dp">110dp</dimen>
     <dimen name="margin_80dp">80dp</dimen>
     <dimen name="margin_150dp">150dp</dimen>
 </resources>
