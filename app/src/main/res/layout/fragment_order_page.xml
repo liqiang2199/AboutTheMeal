@@ -100,6 +100,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/liner_order_no"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:orientation="vertical">
@@ -128,6 +129,8 @@
                     android:layout_gravity="center"/>
 
             </LinearLayout>
+            <include
+                layout="@layout/include_order_list"/>
 
         </LinearLayout>
 

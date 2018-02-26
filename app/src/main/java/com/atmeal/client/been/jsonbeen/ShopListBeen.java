@@ -20,10 +20,26 @@ public class ShopListBeen implements Serializable{
 	
 	private String shop_isTakeout_food;
 	private String shop_isFightAlone;
-	
-	
-	
-	
+
+	private String orderType;
+	private String orderTypeExplain;
+
+	public String getOrderType() {
+		return orderType;
+	}
+
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
+	}
+
+	public String getOrderTypeExplain() {
+		return orderTypeExplain;
+	}
+
+	public void setOrderTypeExplain(String orderTypeExplain) {
+		this.orderTypeExplain = orderTypeExplain;
+	}
+
 	public String getShop_isTakeout_food() {
 		return shop_isTakeout_food;
 	}
