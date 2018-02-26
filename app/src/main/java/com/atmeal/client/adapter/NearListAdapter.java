@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.atmeal.client.R;
 import com.atmeal.client.been.jsonbeen.ShopListBeen;
+import com.atmeal.client.ui.dalog.PurchaseDialog;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class NearListAdapter extends RecyclerView.Adapter<NearListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(NearListAdapter.ViewHolder holder, int position) {
-        ShopListBeen shopListBeen = shopListBeens.get(position);
+        final ShopListBeen shopListBeen = shopListBeens.get(position);
 
         Picasso.with(context).load(shopListBeen.getShopUrl()).into(holder.shop_url);
         holder.shop_name.setText(shopListBeen.getShopName());
@@ -51,6 +52,14 @@ public class NearListAdapter extends RecyclerView.Adapter<NearListAdapter.ViewHo
 
         holder.address_shopType.setText(shopListBeen.getShop_TypeExplain()+"|"+shopListBeen.getShop_Address());
 
+        holder.text_go_fight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //点击拼单
+                PurchaseDialog purchaseDialog = new PurchaseDialog(context,shopListBeen.getShopID(),shopListBeen);
+                purchaseDialog.show();
+            }
+        });
     }
 
     @Override

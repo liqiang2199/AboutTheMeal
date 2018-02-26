@@ -43,6 +43,7 @@
         <activity android:name=".ui.meactivity.AdressListActivity" android:label="地址列表"/>
         <activity android:name=".ui.meactivity.WalletActivity" android:label="我的钱包"/>
         <activity android:name=".ui.meactivity.WallerPaySetActivity" android:label="支付设置"/>
+        <activity android:name=".ui.order.OrderPayActivity" android:label="订单支付"/>
 
         <activity
             android:name="com.mob.tools.MobUIShell"

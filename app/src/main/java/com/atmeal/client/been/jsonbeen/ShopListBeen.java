@@ -1,6 +1,8 @@
 package com.atmeal.client.been.jsonbeen;
 
-public class ShopListBeen {
+import java.io.Serializable;
+
+public class ShopListBeen implements Serializable{
 	
 	private String shopName;
 	private String shopID;

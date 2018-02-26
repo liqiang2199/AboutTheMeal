@@ -16,13 +16,22 @@ import com.atmeal.client.R;
 import com.atmeal.client.adapter.OrderListAdapter;
 import com.atmeal.client.base.BaseFragmentActivity;
 import com.atmeal.client.base.BaseMealFragment;
+import com.atmeal.client.common.SPUtilsCommon;
+import com.atmeal.client.common.UrlCommon;
+import com.atmeal.client.http.OkHttpMannager;
+import com.atmeal.client.http.OkHttp_CallResponse;
+
+import org.json.JSONObject;
+
+import okhttp3.Call;
+import okhttp3.Response;
 
 /**
  * Created by Administrator on 2018/1/14.
  * 订单
  */
 
-public class OrderPageFragment extends BaseMealFragment{
+public class OrderPageFragment extends BaseMealFragment implements OkHttp_CallResponse{
     private View orderView;
 //    private RecyclerView recycler_view;
 //    private LinearLayout liner_find;
@@ -48,5 +57,39 @@ public class OrderPageFragment extends BaseMealFragment{
 //        //设置RecyclerView 布局
 //        recycler_view.setLayoutManager(layoutmanager);
 //        recycler_view.setAdapter(orderListAdapter);
+        getOrderList();
+    }
+
+    private void getOrderList(){
+        String purchase = UrlCommon.getOrderList+"?userToken="
+                + SPUtilsCommon.get(getContext(),"userToken","").toString()
+                ;
+        OkHttpMannager.getInstance().Post_Data(purchase,getContext(),
+                this,true,"Purchase");
+    }
+
+    @Override
+    public void OkHttp_ResponseSuccse(Call call, Response response, JSONObject jsonObject, String tag) {
+
+    }
+
+    @Override
+    public void OkHttp_CallonFailure(Call call) {
+
+    }
+
+    @Override
+    public void OkHttp_CallNoData(String tag) {
+
+    }
+
+    @Override
+    public void OkHttp_CallError(String tag) {
+
+    }
+
+    @Override
+    public void OkHttp_CallToastShow(String msg, String tag) {
+
     }
 }

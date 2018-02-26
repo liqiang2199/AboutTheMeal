@@ -125,4 +125,9 @@
     <string name="me_wallet_set_pay_zfb">支付宝支付</string>
     <string name="me_wallet_set_pay_bank">添加银行卡</string>
 
+    <!--dialog-->
+
+    <string name="alone_meal">单独购买</string>
+    <string name="alone_ping_can">拼餐购买</string>
+
 </resources>

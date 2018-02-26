@@ -237,6 +237,10 @@ public class MainPageFragment extends BaseMealFragment implements OkHttp_CallRes
                     shopListBeen.setShop_Fightalone_Explain(UtilTools.json_GetKeyReturnValue(
                             json,"shop_Distance_Explain"
                     ));
+                    shopListBeen.setShopID(UtilTools.json_GetKeyReturnValue(
+                            json,"shopID"
+                    ));
+                    shopListBeen.setShopPrice(UtilTools.json_GetKeyReturnValue(json,"shopPrice"));
                     shopListBeens.add(shopListBeen);
                 }
                 NearListAdapter nearListAdapter = new NearListAdapter(getContext(),shopListBeens);

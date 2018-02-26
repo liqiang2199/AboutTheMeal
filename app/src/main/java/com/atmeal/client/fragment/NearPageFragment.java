@@ -80,7 +80,7 @@ public class NearPageFragment extends BaseMealFragment implements OkHttp_CallRes
         title_near = (TextView)nearView.findViewById(R.id.title_near);
 
         aMapLocationUtils = new AMapLocationUtils(getContext(),this);
-
+        title_near.setText("定位中...");
         OnClickView(text_host);
         OnClickView(text_bread);
         OnClickView(text_northeastern);
@@ -178,6 +178,10 @@ public class NearPageFragment extends BaseMealFragment implements OkHttp_CallRes
                     shopListBeen.setShop_Fightalone_Explain(UtilTools.json_GetKeyReturnValue(
                             json,"shop_Distance_Explain"
                     ));
+                    shopListBeen.setShopID(UtilTools.json_GetKeyReturnValue(
+                            json,"shopID"
+                    ));
+                    shopListBeen.setShopPrice(UtilTools.json_GetKeyReturnValue(json,"shopPrice"));
                     shopListBeens.add(shopListBeen);
                 }
                 NearListAdapter nearListAdapter = new NearListAdapter(getContext(),shopListBeens);

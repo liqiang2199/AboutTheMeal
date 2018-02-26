@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 
+import com.atmeal.client.been.jsonbeen.ShopListBeen;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -73,6 +75,15 @@ public class IntentCommon {
 
 
     }
+    public void StartIntent(Context context,Class<?> activityClass,String key,ShopListBeen shopListBeen
+    ,String key1,String orderId){
+
+        intent.setClass(context,activityClass);
+        intent.putExtra(key,shopListBeen);
+        intent.putExtra(key1,orderId);
+        context.startActivity(intent);
+    }
+
     public void StartIntent(Context context,Class<?> activityClass,String key,String value){
 
         intent.setClass(context,activityClass);
