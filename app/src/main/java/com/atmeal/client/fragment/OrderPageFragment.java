@@ -99,7 +99,7 @@ public class OrderPageFragment extends BaseMealFragment implements OkHttp_CallRe
 
     @Override
     public void OkHttp_ResponseSuccse(Call call, Response response, JSONObject jsonObject, String tag) {
-        if (tag.equals("ShopList")){
+        if (tag.equals("OrderList")){
             shopListBeens.clear();
             try {
                 String data = jsonObject.getString("data");
@@ -132,24 +132,35 @@ public class OrderPageFragment extends BaseMealFragment implements OkHttp_CallRe
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
             int shopSize = shopListBeens.size();
-            if (shopSize <2){
-                waller_set_pay1.setVisibility(View.GONE);
+            if (shopSize>0){
+                liner_order_no.setVisibility(View.GONE);
+                liner_order_have_data.setVisibility(View.VISIBLE);
+                if (shopSize >1){
+                    waller_set_pay1.setVisibility(View.VISIBLE);
+                }else{
+                    waller_set_pay1.setVisibility(View.GONE);
+                }
+                for (int i = 0 ; i<shopSize;i++){
+                    if (i == 0){
+                        Picasso.with(getContext()).load(shopListBeens.get(0).getShopUrl()).into(image_shop);
+                        shop_name.setText(shopListBeens.get(0).getShopName());
+                        shop_price.setText(shopListBeens.get(0).getShopPrice()+"元");
+                    }
+                    if (i == 1){
+                        Picasso.with(getContext()).load(shopListBeens.get(1).getShopUrl()).into(image_shop1);
+                        shop_name1.setText(shopListBeens.get(1).getShopName());
+                        shop_price1.setText(shopListBeens.get(1).getShopPrice()+"元");
+                        break;
+                    }
+                }
             }else{
-                waller_set_pay1.setVisibility(View.VISIBLE);
+                liner_order_no.setVisibility(View.VISIBLE);
+                liner_order_have_data.setVisibility(View.GONE);
             }
-            for (int i = 0 ; i<shopSize;i++){
-                if (i == 0){
-                    Picasso.with(getContext()).load(shopListBeens.get(0).getShopUrl()).into(image_shop);
-                    shop_name.setText(shopListBeens.get(0).getShopName());
-                    shop_price.setText(shopListBeens.get(0).getShopPrice());
-                }
-                if (i == 1){
-                    Picasso.with(getContext()).load(shopListBeens.get(1).getShopUrl()).into(image_shop1);
-                    shop_name1.setText(shopListBeens.get(1).getShopName());
-                    shop_price1.setText(shopListBeens.get(1).getShopPrice());
-                }
-            }
+
+
         }
     }
 
