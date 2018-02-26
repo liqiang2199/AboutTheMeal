@@ -20,10 +20,12 @@ import com.atmeal.client.adapter.OrderListAdapter;
 import com.atmeal.client.base.BaseFragmentActivity;
 import com.atmeal.client.base.BaseMealFragment;
 import com.atmeal.client.been.jsonbeen.ShopListBeen;
+import com.atmeal.client.common.IntentCommon;
 import com.atmeal.client.common.SPUtilsCommon;
 import com.atmeal.client.common.UrlCommon;
 import com.atmeal.client.http.OkHttpMannager;
 import com.atmeal.client.http.OkHttp_CallResponse;
+import com.atmeal.client.ui.order.OrderClassifyActivity;
 import com.atmeal.client.utils.UtilTools;
 import com.squareup.picasso.Picasso;
 
@@ -41,7 +43,7 @@ import okhttp3.Response;
  * 订单
  */
 
-public class OrderPageFragment extends BaseMealFragment implements OkHttp_CallResponse{
+public class OrderPageFragment extends BaseMealFragment implements OkHttp_CallResponse,View.OnClickListener{
     private View orderView;
 
     private LinearLayout liner_order_no;
@@ -57,6 +59,11 @@ public class OrderPageFragment extends BaseMealFragment implements OkHttp_CallRe
     private ImageView image_shop1;
     private TextView shop_name1;
     private TextView shop_price1;
+
+    private TextView fragment_dfk;
+    private TextView fragment_dfh;
+    private TextView fragment_dsh;
+    private TextView fragment_dpj;
 
     private ArrayList<ShopListBeen> shopListBeens = new ArrayList<>();
 
@@ -85,6 +92,16 @@ public class OrderPageFragment extends BaseMealFragment implements OkHttp_CallRe
         image_shop1 = orderView.findViewById(R.id.image_shop1);
         shop_name1 = orderView.findViewById(R.id.shop_name1);
         shop_price1 = orderView.findViewById(R.id.shop_price1);
+
+        fragment_dfk = orderView.findViewById(R.id.fragment_dfk);
+        fragment_dfh = orderView.findViewById(R.id.fragment_dfh);
+        fragment_dsh = orderView.findViewById(R.id.fragment_dsh);
+        fragment_dpj = orderView.findViewById(R.id.fragment_dpj);
+
+        fragment_dfk.setOnClickListener(this);
+        fragment_dfh.setOnClickListener(this);
+        fragment_dsh.setOnClickListener(this);
+        fragment_dpj.setOnClickListener(this);
 
         getOrderList();
     }
@@ -182,5 +199,10 @@ public class OrderPageFragment extends BaseMealFragment implements OkHttp_CallRe
     @Override
     public void OkHttp_CallToastShow(String msg, String tag) {
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        IntentCommon.getIstance().StartIntent(getContext(), OrderClassifyActivity.class);
     }
 }

@@ -125,6 +125,12 @@
     <string name="me_wallet_set_pay_zfb">支付宝支付</string>
     <string name="me_wallet_set_pay_bank">添加银行卡</string>
 
+    <!--订单列表-->
+    <string name="order_list_dfk">待付款</string>
+    <string name="order_list_dfh">待发货</string>
+    <string name="order_list_dsh">待收货</string>
+    <string name="order_list_dpj">待评价</string>
+
     <!--dialog-->
 
     <string name="alone_meal">单独购买</string>

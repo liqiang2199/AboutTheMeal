@@ -27,10 +27,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="@dimen/margin_5dp"
-            android:paddingBottom="@dimen/margin_5dp">
+            android:paddingTop="@dimen/margin_10dp"
+            android:paddingBottom="@dimen/margin_10dp">
 
             <TextView
+                android:id="@+id/fragment_dfk"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -40,6 +41,7 @@
                 android:gravity="center"/>
 
             <TextView
+                android:id="@+id/fragment_dfh"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -49,6 +51,7 @@
                 android:gravity="center"/>
 
             <TextView
+                android:id="@+id/fragment_dsh"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -58,6 +61,7 @@
                 android:gravity="center"/>
 
             <TextView
+                android:id="@+id/fragment_dpj"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
