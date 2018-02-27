@@ -22,6 +22,7 @@ import com.atmeal.client.loginactivity.HeaderSetActivity;
 import com.atmeal.client.loginactivity.LoginActivity;
 import com.atmeal.client.meactivity.SetActivity;
 import com.atmeal.client.test_webview_demo.BrowserActivity;
+import com.atmeal.client.test_webview_demo.VBrowserActivity;
 import com.atmeal.client.ui.meactivity.AddAdressActivity;
 import com.atmeal.client.ui.meactivity.AdressListActivity;
 import com.atmeal.client.ui.meactivity.WalletActivity;
@@ -39,7 +40,7 @@ public class MePageFragment extends BaseMealFragment {
     private View meView;
 
     private ImageView image_set;
-    private TextView login_is_no,fragvideo;
+    private TextView login_is_no,fragvideo,noval;
     private myImageView iv_head_set;
     private LinearLayout liner_address,me_wallet;
 
@@ -55,6 +56,7 @@ public class MePageFragment extends BaseMealFragment {
 
     @Override
     public void InitView() {
+        noval=meView.findViewById(R.id.noval);
         image_set = (ImageView)meView.findViewById(R.id.image_set);
         login_is_no = (TextView) meView.findViewById(R.id.login_is_no);
         fragvideo=meView.findViewById(R.id.fragvideo);
@@ -65,7 +67,7 @@ public class MePageFragment extends BaseMealFragment {
 
         login_TextTip();
 
-
+        InitOnClick(noval);
         InitOnClick(image_set);
         InitOnClick(login_is_no);
         InitOnClick(iv_head_set);
@@ -107,6 +109,9 @@ public class MePageFragment extends BaseMealFragment {
                             return;
                         }
                         IntentCommon.getIstance().StartIntent(getContext(),HeaderSetActivity.class);
+                        break;
+                    case R.id.noval:
+                        IntentCommon.getIstance().StartIntent(getContext(),VBrowserActivity.class);
                         break;
                     case R.id.fragvideo:
                         //视频跳转

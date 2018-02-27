@@ -13,10 +13,9 @@ import android.os.Message;
 import android.os.Process;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -26,17 +25,15 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-
 import com.atmeal.client.R;
 import com.atmeal.client.test_webview_demo.utils.X5WebView;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebSettings.LayoutAlgorithm;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 import com.tencent.smtt.utils.TbsLog;
@@ -44,13 +41,13 @@ import com.tencent.smtt.utils.TbsLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static com.atmeal.client.test_webview_demo.BrowserActivity.bofangdeurl;
 
 
 public class VBrowserActivity extends Activity {
 	/**
 	 * 作为一个浏览器的示例展示出来，采用android+web的模式
 	 */
+	public static String bofangdeurl="";
 	private X5WebView mWebView;
 	private ViewGroup mViewParent;
 	private ImageButton mBack;
@@ -58,10 +55,10 @@ public class VBrowserActivity extends Activity {
 	private ImageButton mExit;
 	private ImageButton mHome;
 	private ImageButton mMore;
-	private Button mGo,yincang;
+	private Button mGo;
 	private EditText mUrl;
-
-	private  String mHomeUrl = bofangdeurl;
+	private String[] item=new String[]{ "首页","起点小说","言情小说"};
+	private  String mHomeUrl = "https://www.readnovel.com",hc="";
 	private static final String TAG = "SdkDemo";
 	private static final int MAX_LENGTH = 14;
 	private boolean mNeedTestPage = false;
@@ -105,7 +102,7 @@ public class VBrowserActivity extends Activity {
 		 * getWindow().addFlags(
 		 * android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		 */
-		setContentView(R.layout.t5copy);
+		setContentView(R.layout.t5main);
 		mViewParent = (ViewGroup) findViewById(R.id.webView1);
 
 		initBtnListenser();
@@ -134,9 +131,9 @@ public class VBrowserActivity extends Activity {
 
 	private void initProgressBar() {
 		mPageLoadingProgressBar = (ProgressBar) findViewById(R.id.progressBar1);// new
-																				// ProgressBar(getApplicationContext(),
-																				// null,
-																				// android.R.attr.progressBarStyleHorizontal);
+		// ProgressBar(getApplicationContext(),
+		// null,
+		// android.R.attr.progressBarStyleHorizontal);
 		mPageLoadingProgressBar.setMax(100);
 		mPageLoadingProgressBar.setProgressDrawable(this.getResources()
 				.getDrawable(R.drawable.color_progressbar));
@@ -155,6 +152,7 @@ public class VBrowserActivity extends Activity {
 		mWebView.setWebViewClient(new WebViewClient() {
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
+				bofangdeurl="http://api.662820.com/xnflv/index.php?url="+url;
 				return false;
 			}
 
@@ -189,13 +187,13 @@ public class VBrowserActivity extends Activity {
 
 			@Override
 			public boolean onJsConfirm(WebView arg0, String arg1, String arg2,
-					JsResult arg3) {
+									   JsResult arg3) {
 				return super.onJsConfirm(arg0, arg1, arg2, arg3);
 			}
 
 			View myVideoView;
 			View myNormalView;
-			CustomViewCallback callback;
+			IX5WebChromeClient.CustomViewCallback callback;
 
 			// /////////////////////////////////////////////////////////
 			//
@@ -204,7 +202,7 @@ public class VBrowserActivity extends Activity {
 			 */
 			@Override
 			public void onShowCustomView(View view,
-					CustomViewCallback customViewCallback) {
+										 IX5WebChromeClient.CustomViewCallback customViewCallback) {
 				FrameLayout normalView = (FrameLayout) findViewById(R.id.web_filechooser);
 				ViewGroup viewGroup = (ViewGroup) normalView.getParent();
 				viewGroup.removeView(normalView);
@@ -229,7 +227,7 @@ public class VBrowserActivity extends Activity {
 
 			@Override
 			public boolean onJsAlert(WebView arg0, String arg1, String arg2,
-					JsResult arg3) {
+									 JsResult arg3) {
 				/**
 				 * 这里写入你自定义的window alert
 				 */
@@ -241,7 +239,7 @@ public class VBrowserActivity extends Activity {
 
 			@Override
 			public void onDownloadStart(String arg0, String arg1, String arg2,
-					String arg3, long arg4) {
+										String arg3, long arg4) {
 				TbsLog.d(TAG, "url: " + arg0);
 				new AlertDialog.Builder(VBrowserActivity.this)
 						.setTitle("要下载吗？")
@@ -249,7 +247,7 @@ public class VBrowserActivity extends Activity {
 								new DialogInterface.OnClickListener() {
 									@Override
 									public void onClick(DialogInterface dialog,
-											int which) {
+														int which) {
 										Toast.makeText(
 												VBrowserActivity.this,
 												"为避免后台乱下载应用，下载功能已禁用！",
@@ -261,7 +259,7 @@ public class VBrowserActivity extends Activity {
 
 									@Override
 									public void onClick(DialogInterface dialog,
-											int which) {
+														int which) {
 										// TODO Auto-generated method stub
 										Toast.makeText(
 												VBrowserActivity.this,
@@ -286,11 +284,11 @@ public class VBrowserActivity extends Activity {
 
 		WebSettings webSetting = mWebView.getSettings();
 
-		webSetting.setUserAgentString("JUC (Linux; U; 2.3.5; zh-cn; MEIZU MX; 640*960) UCWEB8.5.1.179/145/33232");
+		webSetting.setUserAgentString("Mozilla/5.0 (Linux; U; Android 4.1.1; zh-cn;  MI2 Build/JRO03L) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 XiaoMi/MiuiBrowser/1.0");
 
 
 		webSetting.setAllowFileAccess(true);
-		webSetting.setLayoutAlgorithm(LayoutAlgorithm.NARROW_COLUMNS);
+		webSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
 		webSetting.setSupportZoom(true);
 		webSetting.setBuiltInZoomControls(true);
 		webSetting.setUseWideViewPort(true);
@@ -312,7 +310,7 @@ public class VBrowserActivity extends Activity {
 		// webSetting.setPreFectch(true);
 		long time = System.currentTimeMillis();
 //		if (mIntentUrl == null) {
-			mWebView.loadUrl(mHomeUrl);
+		mWebView.loadUrl(mHomeUrl);
 //		} else {
 //			mWebView.loadUrl(mIntentUrl.toString());
 //		}
@@ -328,7 +326,6 @@ public class VBrowserActivity extends Activity {
 		mExit = (ImageButton) findViewById(R.id.btnExit1);
 		mHome = (ImageButton) findViewById(R.id.btnHome1);
 		mMore = (ImageButton) findViewById(R.id.btnMore);
-		yincang=findViewById(R.id.yincang);
 		if (Integer.parseInt(android.os.Build.VERSION.SDK) >= 16) {
 			mBack.setAlpha(disable);
 			mForward.setAlpha(disable);
@@ -336,13 +333,7 @@ public class VBrowserActivity extends Activity {
 		}
 		mHome.setEnabled(false);
 
-		yincang.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				yincang.setVisibility(View.GONE);
-			}
-		});
-		mBack.setOnClickListener(new OnClickListener() {
+		mBack.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -351,7 +342,7 @@ public class VBrowserActivity extends Activity {
 			}
 		});
 
-		mForward.setOnClickListener(new OnClickListener() {
+		mForward.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -361,16 +352,39 @@ public class VBrowserActivity extends Activity {
 		});
 
 
-		mMore.setOnClickListener(new OnClickListener() {
+		final AlertDialog.Builder buildershezhi=new AlertDialog.Builder(this);
+		mMore.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(VBrowserActivity.this, "not completed",
-						Toast.LENGTH_LONG).show();
+				buildershezhi.setItems(item, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialogInterface, int i) {
+						switch (i){
+							case 0:
+//                                tsswebview.getSettings().setUserAgentString("JUC (Linux; U; 2.3.5; zh-cn; MEIZU MX; 640*960) UCWEB8.5.1.179/145/33232");
+								mWebView.loadUrl(mHomeUrl);
+								break;
+							case 1:
+//                                tsswebview.getSettings().setUserAgentString("");
+								mWebView.loadUrl("http://www.qidian.com");
+								break;
+							case 2:
+//                                tsswebview.getSettings().setUserAgentString("");
+								mWebView.loadUrl("https://www.xs8.cn");
+								break;
+						}
+					}
+				});
+				buildershezhi.show();
 			}
 		});
 
-		mHome.setOnClickListener(new OnClickListener() {
+
+
+
+
+		mHome.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -379,7 +393,7 @@ public class VBrowserActivity extends Activity {
 			}
 		});
 
-		mExit.setOnClickListener(new OnClickListener() {
+		mExit.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Process.killProcess(Process.myPid());
@@ -395,9 +409,7 @@ public class VBrowserActivity extends Activity {
 
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			if (mWebView != null && mWebView.canGoBack()) {
-//				mWebView.goBack();
-				Intent intent=new Intent(VBrowserActivity.this,BrowserActivity.class);
-				startActivity(intent);
+				mWebView.goBack();
 				if (Integer.parseInt(android.os.Build.VERSION.SDK) >= 16)
 					changGoForwardButton(mWebView);
 				return true;
@@ -414,16 +426,16 @@ public class VBrowserActivity extends Activity {
 
 		if (resultCode == RESULT_OK) {
 			switch (requestCode) {
-			case 0:
-				if (null != uploadFile) {
-					Uri result = data == null || resultCode != RESULT_OK ? null
-							: data.getData();
-					uploadFile.onReceiveValue(result);
-					uploadFile = null;
-				}
-				break;
-			default:
-				break;
+				case 0:
+					if (null != uploadFile) {
+						Uri result = data == null || resultCode != RESULT_OK ? null
+								: data.getData();
+						uploadFile.onReceiveValue(result);
+						uploadFile = null;
+					}
+					break;
+				default:
+					break;
 			}
 		} else if (resultCode == RESULT_CANCELED) {
 			if (null != uploadFile) {
@@ -459,22 +471,22 @@ public class VBrowserActivity extends Activity {
 		@Override
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-			case MSG_OPEN_TEST_URL:
-				if (!mNeedTestPage) {
-					return;
-				}
+				case MSG_OPEN_TEST_URL:
+					if (!mNeedTestPage) {
+						return;
+					}
 
-				String testUrl = "file:///sdcard/outputHtml/html/"
-						+ Integer.toString(mCurrentUrl) + ".html";
-				if (mWebView != null) {
-					mWebView.loadUrl(testUrl);
-				}
+					String testUrl = "file:///sdcard/outputHtml/html/"
+							+ Integer.toString(mCurrentUrl) + ".html";
+					if (mWebView != null) {
+						mWebView.loadUrl(testUrl);
+					}
 
-				mCurrentUrl++;
-				break;
-			case MSG_INIT_UI:
-				init();
-				break;
+					mCurrentUrl++;
+					break;
+				case MSG_INIT_UI:
+					init();
+					break;
 			}
 			super.handleMessage(msg);
 		}

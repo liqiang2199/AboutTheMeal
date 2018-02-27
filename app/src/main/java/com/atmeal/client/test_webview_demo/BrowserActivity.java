@@ -57,7 +57,7 @@ public class BrowserActivity extends Activity {
     private ImageButton mMore;
     private Button mGo;
     private EditText mUrl;
-    private String[] item=new String[]{ "爱奇艺","优酷","腾讯视频","播放此页视频"};
+    private String[] item=new String[]{ "爱奇艺","优酷","腾讯视频"};
     private  String mHomeUrl = "http://www.iqiyi.com/",hc="";
     private static final String TAG = "SdkDemo";
     private static final int MAX_LENGTH = 14;
@@ -284,7 +284,7 @@ public class BrowserActivity extends Activity {
 
         WebSettings webSetting = mWebView.getSettings();
 
-        webSetting.setUserAgentString("Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; 360Chrome)");
+        webSetting.setUserAgentString("Mozilla/5.0 (Linux; U; Android 4.1.1; zh-cn;  MI2 Build/JRO03L) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 XiaoMi/MiuiBrowser/1.0");
 
 
         webSetting.setAllowFileAccess(true);

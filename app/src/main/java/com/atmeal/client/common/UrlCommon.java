@@ -6,8 +6,8 @@ package com.atmeal.client.common;
 
 public class UrlCommon {
 //    public static String URL = "http://192.168.44.1:8080/fightalone";
-    public static String URL = "http://www.cup812.cn/fightalone";
-//    public static String URL = "http://47.93.231.42";
+//    public static String URL = "http://www.cup812.cn/fightalone";
+    public static String URL = "http://47.93.231.42";
     //获取广告
     public static String getadv = "/getadv";
     public static String Recommend = "/Recommend";

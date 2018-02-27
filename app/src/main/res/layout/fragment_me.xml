@@ -195,6 +195,7 @@
                 layout="@layout/include_10_layout_linear"/>
 
             <TextView
+                android:id="@+id/noval"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/pad_48dp"
                 android:text="@string/me_read"
