@@ -5,14 +5,10 @@
 
 
     <application
-
-
-
-
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/yc"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/yc"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".application.MealApplication">
@@ -114,8 +110,7 @@
         <service android:name="com.amap.api.location.APSService"/>
 
 
-    </application
->
+    </application>
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
