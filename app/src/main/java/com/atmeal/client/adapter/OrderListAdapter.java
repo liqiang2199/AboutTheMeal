@@ -55,7 +55,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
         holder.shop_name.setText(shopListBeen.getShopName());
         holder.shop_price.setText(shopListBeen.getShopPrice()+"元");
         String typeOrder = shopListBeen.getOrderType();
-        if (typeOrder.equals("-100")){
+        if (typeOrder.equals("-100")||typeOrder.equals("-10")){
             holder.textView.setVisibility(View.GONE);
         }else{
             holder.textView.setVisibility(View.VISIBLE);
