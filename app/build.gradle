@@ -57,11 +57,11 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.1.1'
     //虚线
     compile 'com.fang:dashview:v1.0.0'
-//    compile name: 'SMSSDK-3.0.0', ext: 'aar'
-//    compile name: 'SMSSDKGUI-3.0.0', ext: 'aar'
-//    compile files('libs/MobCommons-2017.0607.1736.jar')
+    //    compile name: 'SMSSDK-3.0.0', ext: 'aar'
+    //    compile name: 'SMSSDKGUI-3.0.0', ext: 'aar'
+    //    compile files('libs/MobCommons-2017.0607.1736.jar')
     compile files('libs/tbs_sdk_thirdapp_v3.5.0.1004_43500_sharewithdownload_withoutGame_obfs_20170801_113025.jar')
-
     compile 'com.amap.api:location:latest.integration'
+    implementation files('libs/MobCommons-2017.1213.1552.jar')
 }
 
