@@ -134,6 +134,7 @@
                 layout="@layout/include_1_layout_linear"/>
 
             <LinearLayout
+                android:id="@+id/linear_discount"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_80dp"
                 android:orientation="horizontal"

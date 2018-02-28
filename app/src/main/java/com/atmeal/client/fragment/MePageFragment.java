@@ -25,6 +25,7 @@ import com.atmeal.client.test_webview_demo.BrowserActivity;
 import com.atmeal.client.test_webview_demo.VBrowserActivity;
 import com.atmeal.client.ui.meactivity.AddAdressActivity;
 import com.atmeal.client.ui.meactivity.AdressListActivity;
+import com.atmeal.client.ui.meactivity.DiscountActivity;
 import com.atmeal.client.ui.meactivity.WalletActivity;
 import com.atmeal.client.utils.UtilTools;
 import com.atmeal.client.weigth.myImageView;
@@ -42,7 +43,7 @@ public class MePageFragment extends BaseMealFragment {
     private ImageView image_set;
     private TextView login_is_no,fragvideo,noval;
     private myImageView iv_head_set;
-    private LinearLayout liner_address,me_wallet;
+    private LinearLayout liner_address,me_wallet,linear_discount;
 
     @Nullable
     @Override
@@ -64,6 +65,7 @@ public class MePageFragment extends BaseMealFragment {
 
         liner_address = meView.findViewById(R.id.liner_address);
         me_wallet = meView.findViewById(R.id.me_wallet);//我的钱包
+        linear_discount = meView.findViewById(R.id.linear_discount);//我的优惠
 
         login_TextTip();
 
@@ -74,6 +76,7 @@ public class MePageFragment extends BaseMealFragment {
         InitOnClick(fragvideo);
         InitOnClick(liner_address);
         InitOnClick(me_wallet);
+        InitOnClick(linear_discount);
     }
 
     @Override
@@ -128,6 +131,10 @@ public class MePageFragment extends BaseMealFragment {
                     case R.id.me_wallet:
                         //我的钱包
                         IntentCommon.getIstance().StartIntent(getContext(),WalletActivity.class);
+                        break;
+                    case R.id.linear_discount:
+                        //优惠出
+                        IntentCommon.getIstance().StartIntent(getContext(),DiscountActivity.class);
                         break;
                 }
             }
